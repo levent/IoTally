@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SBJson.h"
 
-@interface TallyViewController : UIViewController
+@interface TallyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
+    NSString *feedId;
+    NSString *apiKey;
+    
+    NSMutableData *responseData;
+    
+    IBOutlet UILabel *currentTallyField;
+}
+
+-(IBAction)plusOne:(id)sender;
+-(IBAction)minusOne:(id)sender;
 
 @end
