@@ -13,13 +13,13 @@
 		2B2853F914D2B46500C637E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B2853F714D2B46500C637E3 /* InfoPlist.strings */; };
 		2B2853FB14D2B46500C637E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2853FA14D2B46500C637E3 /* main.m */; };
 		2B2853FF14D2B46500C637E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2853FE14D2B46500C637E3 /* AppDelegate.m */; };
-		2B28540214D2B46500C637E3 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28540114D2B46500C637E3 /* FirstViewController.m */; };
+		2B28540214D2B46500C637E3 /* TallyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28540114D2B46500C637E3 /* TallyViewController.m */; };
 		2B28540414D2B46500C637E3 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28540314D2B46500C637E3 /* first.png */; };
 		2B28540614D2B46500C637E3 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28540514D2B46500C637E3 /* first@2x.png */; };
 		2B28540914D2B46500C637E3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28540814D2B46500C637E3 /* SettingsViewController.m */; };
 		2B28540B14D2B46500C637E3 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28540A14D2B46500C637E3 /* second.png */; };
 		2B28540D14D2B46500C637E3 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28540C14D2B46500C637E3 /* second@2x.png */; };
-		2B28541014D2B46500C637E3 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B28540E14D2B46500C637E3 /* FirstViewController.xib */; };
+		2B28541014D2B46500C637E3 /* TallyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B28540E14D2B46500C637E3 /* TallyViewController.xib */; };
 		2B28541314D2B46500C637E3 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B28541114D2B46500C637E3 /* SettingsViewController.xib */; };
 		2B28541B14D2B68700C637E3 /* 157-wrench.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28541914D2B68700C637E3 /* 157-wrench.png */; };
 		2B28541C14D2B68700C637E3 /* 157-wrench@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B28541A14D2B68700C637E3 /* 157-wrench@2x.png */; };
@@ -38,15 +38,15 @@
 		2B2853FC14D2B46500C637E3 /* PachTally-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PachTally-Prefix.pch"; sourceTree = "<group>"; };
 		2B2853FD14D2B46500C637E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2B2853FE14D2B46500C637E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2B28540014D2B46500C637E3 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		2B28540114D2B46500C637E3 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		2B28540014D2B46500C637E3 /* TallyViewController.h */ = {isa = PBXFileReference; path = TallyViewController.h; sourceTree = "<group>"; };
+		2B28540114D2B46500C637E3 /* TallyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TallyViewController.m; sourceTree = "<group>"; };
 		2B28540314D2B46500C637E3 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		2B28540514D2B46500C637E3 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		2B28540714D2B46500C637E3 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		2B28540814D2B46500C637E3 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2B28540A14D2B46500C637E3 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		2B28540C14D2B46500C637E3 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		2B28540F14D2B46500C637E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
+		2B28540F14D2B46500C637E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TallyViewController.xib; sourceTree = "<group>"; };
 		2B28541214D2B46500C637E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
 		2B28541914D2B68700C637E3 /* 157-wrench.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "157-wrench.png"; sourceTree = "<group>"; };
 		2B28541A14D2B68700C637E3 /* 157-wrench@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "157-wrench@2x.png"; sourceTree = "<group>"; };
@@ -104,15 +104,15 @@
 				2B28541A14D2B68700C637E3 /* 157-wrench@2x.png */,
 				2B2853FD14D2B46500C637E3 /* AppDelegate.h */,
 				2B2853FE14D2B46500C637E3 /* AppDelegate.m */,
-				2B28540014D2B46500C637E3 /* FirstViewController.h */,
-				2B28540114D2B46500C637E3 /* FirstViewController.m */,
+				2B28540014D2B46500C637E3 /* TallyViewController.h */,
+				2B28540114D2B46500C637E3 /* TallyViewController.m */,
 				2B28540314D2B46500C637E3 /* first.png */,
 				2B28540514D2B46500C637E3 /* first@2x.png */,
 				2B28540714D2B46500C637E3 /* SettingsViewController.h */,
 				2B28540814D2B46500C637E3 /* SettingsViewController.m */,
 				2B28540A14D2B46500C637E3 /* second.png */,
 				2B28540C14D2B46500C637E3 /* second@2x.png */,
-				2B28540E14D2B46500C637E3 /* FirstViewController.xib */,
+				2B28540E14D2B46500C637E3 /* TallyViewController.xib */,
 				2B28541114D2B46500C637E3 /* SettingsViewController.xib */,
 				2B2853F514D2B46500C637E3 /* Supporting Files */,
 			);
@@ -185,7 +185,7 @@
 				2B28540614D2B46500C637E3 /* first@2x.png in Resources */,
 				2B28540B14D2B46500C637E3 /* second.png in Resources */,
 				2B28540D14D2B46500C637E3 /* second@2x.png in Resources */,
-				2B28541014D2B46500C637E3 /* FirstViewController.xib in Resources */,
+				2B28541014D2B46500C637E3 /* TallyViewController.xib in Resources */,
 				2B28541314D2B46500C637E3 /* SettingsViewController.xib in Resources */,
 				2B28541B14D2B68700C637E3 /* 157-wrench.png in Resources */,
 				2B28541C14D2B68700C637E3 /* 157-wrench@2x.png in Resources */,
@@ -203,7 +203,7 @@
 			files = (
 				2B2853FB14D2B46500C637E3 /* main.m in Sources */,
 				2B2853FF14D2B46500C637E3 /* AppDelegate.m in Sources */,
-				2B28540214D2B46500C637E3 /* FirstViewController.m in Sources */,
+				2B28540214D2B46500C637E3 /* TallyViewController.m in Sources */,
 				2B28540914D2B46500C637E3 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,12 +219,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2B28540E14D2B46500C637E3 /* FirstViewController.xib */ = {
+		2B28540E14D2B46500C637E3 /* TallyViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2B28540F14D2B46500C637E3 /* en */,
 			);
-			name = FirstViewController.xib;
+			name = TallyViewController.xib;
 			sourceTree = "<group>";
 		};
 		2B28541114D2B46500C637E3 /* SettingsViewController.xib */ = {

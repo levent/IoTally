@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "FirstViewController.h"
+#import "TallyViewController.h"
 
 #import "SettingsViewController.h"
 
@@ -21,7 +21,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+    UIViewController *viewController1 = [[TallyViewController alloc] initWithNibName:@"TallyViewController" bundle:nil];
     UIViewController *viewController2 = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
