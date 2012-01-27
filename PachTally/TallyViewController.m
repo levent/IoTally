@@ -30,6 +30,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -46,10 +51,10 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(responseString);
+//    NSLog(responseString);
     if([responseString length] > 1) {
         NSDictionary *tallyDatastream = [responseString JSONValue];
-        NSLog(@"Dictionary value for \"current value\" is \"%@\"", [tallyDatastream objectForKey:@"current_value"]);
+//        NSLog(@"Dictionary value for \"current value\" is \"%@\"", [tallyDatastream objectForKey:@"current_value"]);
         currentTallyField.text = [tallyDatastream objectForKey:@"current_value"];
     }
 }
@@ -74,6 +79,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {   
+    
     NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.json?key=%@", feedId, apiKey];
 
 	responseData = [NSMutableData data];
@@ -85,6 +91,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [locationManager stopMonitoringSignificantLocationChanges];
 	[super viewWillDisappear:animated];
 }
 
@@ -115,11 +122,13 @@
     
     currentTallyField.text = [[NSString alloc] initWithFormat:@"%d", [currentTallyField.text intValue] + 1];
 
-    NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?key=%@", feedId, apiKey]; 
+    NSString *postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"location\":{\"lat\":\"%@\",\"lon\":\"%@\"},\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"},{\"id\":\"lat\",\"current_value\":\"%@\"},{\"id\":\"lon\",\"current_value\":\"%@\"}]}", currentLat, currentLon, [currentTallyField text], currentLat, currentLon];
+    NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@.json?key=%@", feedId, apiKey]; 
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
-    NSString *postString = [currentTallyField text];
+//    NSLog(postBody);
+    NSString *postString = postBody;
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
@@ -135,6 +144,11 @@
     NSString *postString = [currentTallyField text];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    currentLat = [[NSString alloc] initWithFormat:@"%f", newLocation.coordinate.latitude];
+    currentLon = [[NSString alloc] initWithFormat:@"%f", newLocation.coordinate.longitude];
 }
 
 @end

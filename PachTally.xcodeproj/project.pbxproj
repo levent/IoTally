@@ -37,6 +37,7 @@
 		2B28544314D2DB6300C637E3 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28543514D2DB6300C637E3 /* SBJsonTokeniser.m */; };
 		2B28544414D2DB6300C637E3 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28543714D2DB6300C637E3 /* SBJsonUTF8Stream.m */; };
 		2B28544514D2DB6300C637E3 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28543914D2DB6300C637E3 /* SBJsonWriter.m */; };
+		2B28544C14D2F6C500C637E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B28544B14D2F6C500C637E3 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		2B28543714D2DB6300C637E3 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		2B28543814D2DB6300C637E3 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		2B28543914D2DB6300C637E3 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		2B28544B14D2F6C500C637E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B28544C14D2F6C500C637E3 /* CoreLocation.framework in Frameworks */,
 				2B2853EF14D2B46500C637E3 /* UIKit.framework in Frameworks */,
 				2B2853F114D2B46500C637E3 /* Foundation.framework in Frameworks */,
 				2B2853F314D2B46500C637E3 /* CoreGraphics.framework in Frameworks */,
@@ -108,6 +111,7 @@
 		2B2853DF14D2B46400C637E3 = {
 			isa = PBXGroup;
 			children = (
+				2B28544B14D2F6C500C637E3 /* CoreLocation.framework */,
 				2B2853F414D2B46500C637E3 /* PachTally */,
 				2B2853ED14D2B46500C637E3 /* Frameworks */,
 				2B2853EB14D2B46500C637E3 /* Products */,

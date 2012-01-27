@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SBJson.h"
 
-@interface TallyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface TallyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate> {
     NSString *feedId;
     NSString *apiKey;
+    NSString *currentLat;
+    NSString *currentLon; 
+    
+    CLLocationManager *locationManager;
     
     NSMutableData *responseData;
     
@@ -20,5 +24,6 @@
 
 -(IBAction)plusOne:(id)sender;
 -(IBAction)minusOne:(id)sender;
+//-(void)locationUpdate:(CLLocation *)location;
 
 @end
