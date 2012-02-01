@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SBJson.h"
+#import "CKSparkline.h"
 
 @interface TallyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate> {
     NSString *feedId;
@@ -19,6 +20,8 @@
     
     NSMutableData *responseData;
     
+    IBOutlet CKSparkline *sparkline;
+    
     IBOutlet UIButton *plusOneButton;
     IBOutlet UILabel *currentTallyField;
 }
@@ -26,5 +29,6 @@
 -(IBAction)plusOne:(id)sender;
 -(IBAction)minusOne:(id)sender;
 //-(void)locationUpdate:(CLLocation *)location;
+-(void)drawSparkLine;
 
 @end

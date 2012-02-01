@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0F7BF714D9C3FB007D9B34 /* CKSparkline.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0F7BF614D9C3FB007D9B34 /* CKSparkline.m */; };
 		2B2853EF14D2B46500C637E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2853EE14D2B46500C637E3 /* UIKit.framework */; };
 		2B2853F114D2B46500C637E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2853F014D2B46500C637E3 /* Foundation.framework */; };
 		2B2853F314D2B46500C637E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2853F214D2B46500C637E3 /* CoreGraphics.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B0F7BF514D9C3FB007D9B34 /* CKSparkline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKSparkline.h; path = ../../cksparkline/src/CKSparkline.h; sourceTree = "<group>"; };
+		2B0F7BF614D9C3FB007D9B34 /* CKSparkline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CKSparkline.m; path = ../../cksparkline/src/CKSparkline.m; sourceTree = "<group>"; };
 		2B2853EA14D2B46500C637E3 /* PachTally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PachTally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B2853EE14D2B46500C637E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2B2853F014D2B46500C637E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,6 +142,8 @@
 		2B2853F414D2B46500C637E3 /* PachTally */ = {
 			isa = PBXGroup;
 			children = (
+				2B0F7BF514D9C3FB007D9B34 /* CKSparkline.h */,
+				2B0F7BF614D9C3FB007D9B34 /* CKSparkline.m */,
 				2B28542114D2DB6000C637E3 /* NSObject+SBJson.h */,
 				2B28542214D2DB6000C637E3 /* NSObject+SBJson.m */,
 				2B28542314D2DB6000C637E3 /* SBJson.h */,
@@ -283,6 +288,7 @@
 				2B28544314D2DB6300C637E3 /* SBJsonTokeniser.m in Sources */,
 				2B28544414D2DB6300C637E3 /* SBJsonUTF8Stream.m in Sources */,
 				2B28544514D2DB6300C637E3 /* SBJsonWriter.m in Sources */,
+				2B0F7BF714D9C3FB007D9B34 /* CKSparkline.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

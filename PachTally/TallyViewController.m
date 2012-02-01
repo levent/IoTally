@@ -51,7 +51,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-//    NSLog(responseString);
+    NSLog(responseString);
     if([responseString length] > 1) {
         NSDictionary *tallyDatastream = [responseString JSONValue];
 //        NSLog(@"Dictionary value for \"current value\" is \"%@\"", [tallyDatastream objectForKey:@"current_value"]);
@@ -79,6 +79,17 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {   
+    // Sample data
+//    sparkline.data = [NS arrayWithObjects:
+//                      [NSNumber numberWithFloat:2.0],
+//                      [NSNumber numberWithFloat:4.5],
+//                      [NSNumber numberWithFloat:5.2],
+//                      [NSNumber numberWithFloat:7.1],
+//                      [NSNumber numberWithFloat:2.3],
+//                      [NSNumber numberWithFloat:3.9],
+//                      [NSNumber numberWithFloat:1.2],
+//                      nil];
+    
     
     NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.json?key=%@", feedId, apiKey];
 
@@ -132,14 +143,7 @@
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
-
-    // These graphs suck
-//    NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.png?duration=1hour&width=%.0f&height=%.0f&colour=000000", feedId, plusOneButton.frame.size.width, plusOneButton.frame.size.height];
-//    NSData *receivedGraph = [NSData dataWithContentsOfURL:[NSURL URLWithString:graphUrl]];
-//    UIImage *graphImage = [[UIImage alloc] initWithData:receivedGraph];
-//
-//
-//    [plusOneButton setBackgroundImage:graphImage forState:UIControlStateNormal];
+    [self drawSparkLine];
 }
 
 - (IBAction)minusOne:(id)sender {
@@ -153,11 +157,26 @@
     NSString *postString = [currentTallyField text];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    [self drawSparkLine];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     currentLat = [[NSString alloc] initWithFormat:@"%f", newLocation.coordinate.latitude];
     currentLon = [[NSString alloc] initWithFormat:@"%f", newLocation.coordinate.longitude];
+}
+
+- (void)drawSparkLine {
+    NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?duration=1hour&interval=0&key=%@", feedId, apiKey];
+    NSString *receivedDataPoints = [NSString stringWithContentsOfURL:[NSURL URLWithString:graphUrl]];
+    NSArray *newArray = [receivedDataPoints componentsSeparatedByString:@"\n"];
+    NSMutableArray *currentDataPoints = [[NSMutableArray alloc] init];
+    int i;
+    for(i = 0; i < [newArray count]; i++) {
+        [currentDataPoints addObject:[[[newArray objectAtIndex:i] componentsSeparatedByString:@","] objectAtIndex:1]];
+    }
+    [sparkline setLineWidth:1.0];
+    [sparkline setData:currentDataPoints];
 }
 
 @end
