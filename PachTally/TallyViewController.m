@@ -51,10 +51,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(responseString);
     if([responseString length] > 1) {
         NSDictionary *tallyDatastream = [responseString JSONValue];
-//        NSLog(@"Dictionary value for \"current value\" is \"%@\"", [tallyDatastream objectForKey:@"current_value"]);
         currentTallyField.text = [tallyDatastream objectForKey:@"current_value"];
     }
 }
@@ -79,20 +77,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {   
-    // Sample data
-//    sparkline.data = [NS arrayWithObjects:
-//                      [NSNumber numberWithFloat:2.0],
-//                      [NSNumber numberWithFloat:4.5],
-//                      [NSNumber numberWithFloat:5.2],
-//                      [NSNumber numberWithFloat:7.1],
-//                      [NSNumber numberWithFloat:2.3],
-//                      [NSNumber numberWithFloat:3.9],
-//                      [NSNumber numberWithFloat:1.2],
-//                      nil];
-    
-    
     NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.json?key=%@", feedId, apiKey];
-
 	responseData = [NSMutableData data];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1.0];
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -138,7 +123,6 @@
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
-//    NSLog(postBody);
     NSString *postString = postBody;
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -175,6 +159,8 @@
     for(i = 0; i < [newArray count]; i++) {
         [currentDataPoints addObject:[[[newArray objectAtIndex:i] componentsSeparatedByString:@","] objectAtIndex:1]];
     }
+    
+    [sparkline setLineColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1]];
     [sparkline setLineWidth:1.0];
     [sparkline setData:currentDataPoints];
 }
