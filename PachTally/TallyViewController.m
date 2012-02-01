@@ -151,8 +151,9 @@
 }
 
 - (void)drawSparkLine {
-    NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?duration=1hour&interval=0&key=%@", feedId, apiKey];
+    NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?duration=1hour&interval_type=discrete&interval=15&key=%@", feedId, apiKey];
     NSString *receivedDataPoints = [NSString stringWithContentsOfURL:[NSURL URLWithString:graphUrl]];
+    NSLog(@"dp %@", receivedDataPoints);
     NSArray *newArray = [receivedDataPoints componentsSeparatedByString:@"\n"];
     NSMutableArray *currentDataPoints = [[NSMutableArray alloc] init];
     int i;
