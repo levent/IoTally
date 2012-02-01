@@ -19,6 +19,7 @@
     
     NSMutableData *responseData;
     
+    IBOutlet UIButton *plusOneButton;
     IBOutlet UILabel *currentTallyField;
 }
 

@@ -122,8 +122,8 @@
     
     currentTallyField.text = [[NSString alloc] initWithFormat:@"%d", [currentTallyField.text intValue] + 1];
 
-    NSString *postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"location\":{\"lat\":\"%@\",\"lon\":\"%@\"},\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"},{\"id\":\"lat\",\"current_value\":\"%@\"},{\"id\":\"lon\",\"current_value\":\"%@\"}]}", currentLat, currentLon, [currentTallyField text], currentLat, currentLon];
     NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@.json?key=%@", feedId, apiKey]; 
+    NSString *postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"location\":{\"lat\":\"%@\",\"lon\":\"%@\"},\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"},{\"id\":\"lat\",\"current_value\":\"%@\"},{\"id\":\"lon\",\"current_value\":\"%@\"}]}", currentLat, currentLon, [currentTallyField text], currentLat, currentLon];
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
@@ -131,6 +131,15 @@
     NSString *postString = postBody;
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+
+    // These graphs suck
+//    NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.png?duration=1hour&width=%.0f&height=%.0f&colour=000000", feedId, plusOneButton.frame.size.width, plusOneButton.frame.size.height];
+//    NSData *receivedGraph = [NSData dataWithContentsOfURL:[NSURL URLWithString:graphUrl]];
+//    UIImage *graphImage = [[UIImage alloc] initWithData:receivedGraph];
+//
+//
+//    [plusOneButton setBackgroundImage:graphImage forState:UIControlStateNormal];
 }
 
 - (IBAction)minusOne:(id)sender {

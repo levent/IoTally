@@ -111,7 +111,6 @@
 		2B2853DF14D2B46400C637E3 = {
 			isa = PBXGroup;
 			children = (
-				2B28544B14D2F6C500C637E3 /* CoreLocation.framework */,
 				2B2853F414D2B46500C637E3 /* PachTally */,
 				2B2853ED14D2B46500C637E3 /* Frameworks */,
 				2B2853EB14D2B46500C637E3 /* Products */,
@@ -129,6 +128,7 @@
 		2B2853ED14D2B46500C637E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B28544B14D2F6C500C637E3 /* CoreLocation.framework */,
 				2B2853EE14D2B46500C637E3 /* UIKit.framework */,
 				2B2853F014D2B46500C637E3 /* Foundation.framework */,
 				2B2853F214D2B46500C637E3 /* CoreGraphics.framework */,
@@ -366,7 +366,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PachTally/PachTally-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "PachTally/PachTally-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -377,7 +379,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PachTally/PachTally-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "PachTally/PachTally-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -402,6 +406,7 @@
 				2B28541814D2B46500C637E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
