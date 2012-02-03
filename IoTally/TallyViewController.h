@@ -1,6 +1,6 @@
 //
 //  FirstViewController.h
-//  PachTally
+//  IoTally
 //
 //  Created by Levent Ali on 27/01/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -14,7 +14,9 @@
     NSString *feedId;
     NSString *apiKey;
     NSString *currentLat;
-    NSString *currentLon; 
+    NSString *currentLon;
+    
+    BOOL *sendLocation;
     
     CLLocationManager *locationManager;
     
@@ -30,5 +32,6 @@
 -(IBAction)minusOne:(id)sender;
 //-(void)locationUpdate:(CLLocation *)location;
 -(void)drawSparkLine;
+-(void)updateFeed:(NSString *)currentValue;
 
 @end

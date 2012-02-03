@@ -48,14 +48,14 @@
 /* Begin PBXFileReference section */
 		2B0F7BF514D9C3FB007D9B34 /* CKSparkline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKSparkline.h; path = ../../cksparkline/src/CKSparkline.h; sourceTree = "<group>"; };
 		2B0F7BF614D9C3FB007D9B34 /* CKSparkline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CKSparkline.m; path = ../../cksparkline/src/CKSparkline.m; sourceTree = "<group>"; };
-		2B2853EA14D2B46500C637E3 /* PachTally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PachTally.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B2853EA14D2B46500C637E3 /* IoTally.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoTally.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B2853EE14D2B46500C637E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2B2853F014D2B46500C637E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2B2853F214D2B46500C637E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2B2853F614D2B46500C637E3 /* PachTally-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PachTally-Info.plist"; sourceTree = "<group>"; };
+		2B2853F614D2B46500C637E3 /* IoTally-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IoTally-Info.plist"; sourceTree = "<group>"; };
 		2B2853F814D2B46500C637E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2B2853FA14D2B46500C637E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2B2853FC14D2B46500C637E3 /* PachTally-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PachTally-Prefix.pch"; sourceTree = "<group>"; };
+		2B2853FC14D2B46500C637E3 /* IoTally-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IoTally-Prefix.pch"; sourceTree = "<group>"; };
 		2B2853FD14D2B46500C637E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2B2853FE14D2B46500C637E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2B28540014D2B46500C637E3 /* TallyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TallyViewController.h; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			children = (
 				2B50857C14DBFF230030A045 /* icon.png */,
 				2B50857A14DBFF200030A045 /* icon@2x.png */,
-				2B2853F414D2B46500C637E3 /* PachTally */,
+				2B2853F414D2B46500C637E3 /* IoTally */,
 				2B2853ED14D2B46500C637E3 /* Frameworks */,
 				2B2853EB14D2B46500C637E3 /* Products */,
 			);
@@ -135,7 +135,7 @@
 		2B2853EB14D2B46500C637E3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B2853EA14D2B46500C637E3 /* PachTally.app */,
+				2B2853EA14D2B46500C637E3 /* IoTally.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,7 +152,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2B2853F414D2B46500C637E3 /* PachTally */ = {
+		2B2853F414D2B46500C637E3 /* IoTally */ = {
 			isa = PBXGroup;
 			children = (
 				2B0F7BF514D9C3FB007D9B34 /* CKSparkline.h */,
@@ -202,16 +202,16 @@
 				2B50858114DC038D0030A045 /* ButtonWithColor.h */,
 				2B50858214DC038D0030A045 /* ButtonWithColor.m */,
 			);
-			path = PachTally;
+			path = IoTally;
 			sourceTree = "<group>";
 		};
 		2B2853F514D2B46500C637E3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2B2853F614D2B46500C637E3 /* PachTally-Info.plist */,
+				2B2853F614D2B46500C637E3 /* IoTally-Info.plist */,
 				2B2853F714D2B46500C637E3 /* InfoPlist.strings */,
 				2B2853FA14D2B46500C637E3 /* main.m */,
-				2B2853FC14D2B46500C637E3 /* PachTally-Prefix.pch */,
+				2B2853FC14D2B46500C637E3 /* IoTally-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -219,9 +219,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2B2853E914D2B46500C637E3 /* PachTally */ = {
+		2B2853E914D2B46500C637E3 /* IoTally */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B28541614D2B46500C637E3 /* Build configuration list for PBXNativeTarget "PachTally" */;
+			buildConfigurationList = 2B28541614D2B46500C637E3 /* Build configuration list for PBXNativeTarget "IoTally" */;
 			buildPhases = (
 				2B2853E614D2B46500C637E3 /* Sources */,
 				2B2853E714D2B46500C637E3 /* Frameworks */,
@@ -231,9 +231,9 @@
 			);
 			dependencies = (
 			);
-			name = PachTally;
-			productName = PachTally;
-			productReference = 2B2853EA14D2B46500C637E3 /* PachTally.app */;
+			name = IoTally;
+			productName = IoTally;
+			productReference = 2B2853EA14D2B46500C637E3 /* IoTally.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -244,7 +244,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = 2B2853E414D2B46400C637E3 /* Build configuration list for PBXProject "PachTally" */;
+			buildConfigurationList = 2B2853E414D2B46400C637E3 /* Build configuration list for PBXProject "IoTally" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -256,7 +256,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2B2853E914D2B46500C637E3 /* PachTally */,
+				2B2853E914D2B46500C637E3 /* IoTally */,
 			);
 		};
 /* End PBXProject section */
@@ -389,11 +389,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PachTally/PachTally-Prefix.pch";
+				GCC_PREFIX_HEADER = "IoTally/IoTally-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "PachTally/PachTally-Info.plist";
+				INFOPLIST_FILE = "IoTally/IoTally-Info.plist";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = IoTally;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -402,11 +402,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PachTally/PachTally-Prefix.pch";
+				GCC_PREFIX_HEADER = "IoTally/IoTally-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "PachTally/PachTally-Info.plist";
+				INFOPLIST_FILE = "IoTally/IoTally-Info.plist";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = IoTally;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -414,7 +414,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2B2853E414D2B46400C637E3 /* Build configuration list for PBXProject "PachTally" */ = {
+		2B2853E414D2B46400C637E3 /* Build configuration list for PBXProject "IoTally" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B28541414D2B46500C637E3 /* Debug */,
@@ -423,7 +423,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B28541614D2B46500C637E3 /* Build configuration list for PBXNativeTarget "PachTally" */ = {
+		2B28541614D2B46500C637E3 /* Build configuration list for PBXNativeTarget "IoTally" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B28541714D2B46500C637E3 /* Debug */,
