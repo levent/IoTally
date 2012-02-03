@@ -39,6 +39,8 @@
 		2B28544414D2DB6300C637E3 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28543714D2DB6300C637E3 /* SBJsonUTF8Stream.m */; };
 		2B28544514D2DB6300C637E3 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B28543914D2DB6300C637E3 /* SBJsonWriter.m */; };
 		2B28544C14D2F6C500C637E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B28544B14D2F6C500C637E3 /* CoreLocation.framework */; };
+		2B50857B14DBFF200030A045 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B50857A14DBFF200030A045 /* icon@2x.png */; };
+		2B50857D14DBFF230030A045 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B50857C14DBFF230030A045 /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		2B28543814D2DB6300C637E3 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		2B28543914D2DB6300C637E3 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		2B28544B14D2F6C500C637E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2B50857A14DBFF200030A045 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		2B50857C14DBFF230030A045 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 		2B2853DF14D2B46400C637E3 = {
 			isa = PBXGroup;
 			children = (
+				2B50857C14DBFF230030A045 /* icon.png */,
+				2B50857A14DBFF200030A045 /* icon@2x.png */,
 				2B2853F414D2B46500C637E3 /* PachTally */,
 				2B2853ED14D2B46500C637E3 /* Frameworks */,
 				2B2853EB14D2B46500C637E3 /* Products */,
@@ -262,6 +268,8 @@
 				2B28541C14D2B68700C637E3 /* 157-wrench@2x.png in Resources */,
 				2B28541F14D2B7DF00C637E3 /* 78-stopwatch.png in Resources */,
 				2B28542014D2B7DF00C637E3 /* 78-stopwatch@2x.png in Resources */,
+				2B50857B14DBFF200030A045 /* icon@2x.png in Resources */,
+				2B50857D14DBFF230030A045 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
