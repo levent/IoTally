@@ -39,6 +39,10 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
+    if(statusCode >= 400) {
+        [connection cancel];
+    }
 	[responseData setLength:0];
 }
 
@@ -165,9 +169,12 @@
     NSArray *newArray = [receivedDataPoints componentsSeparatedByString:@"\n"];
     NSMutableArray *currentDataPoints = [[NSMutableArray alloc] init];
     int i;
-    NSLog(@"%d", [newArray count]);
+    NSArray *currentRow = [[NSArray alloc] init];
     for(i = 0; i < [newArray count]; i++) {
-        [currentDataPoints addObject:[[[newArray objectAtIndex:i] componentsSeparatedByString:@","] objectAtIndex:1]];
+        currentRow = [[newArray objectAtIndex:i] componentsSeparatedByString:@","];
+        if([currentRow count] == 2) {
+            [currentDataPoints addObject:[currentRow objectAtIndex:1]];
+        }
     }
     
     [sparkline setLineColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1]];
