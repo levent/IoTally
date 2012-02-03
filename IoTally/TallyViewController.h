@@ -25,6 +25,7 @@
     IBOutlet CKSparkline *sparkline;
     
     IBOutlet UIButton *plusOneButton;
+    IBOutlet UIButton *minusOneButton;
     IBOutlet UILabel *currentTallyField;
 }
 

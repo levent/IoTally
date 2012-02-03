@@ -79,15 +79,18 @@
 }
 
 -(IBAction)saveSettings:(id)sender {
-    feedId = [[NSString alloc] initWithFormat:feedIdField.text];
-    [feedIdField setText:feedId];
-    NSUserDefaults *feedIdDefault = [NSUserDefaults standardUserDefaults];
-    [feedIdDefault setObject:feedId forKey:@"feedId"];
-    
-    apiKey = [[NSString alloc] initWithFormat:apiKeyField.text];
-    [apiKeyField setText:apiKey];
-    NSUserDefaults *apiKeyDefault = [NSUserDefaults standardUserDefaults];
-    [apiKeyDefault setObject:apiKey forKey:@"apiKey"];
+    if (feedIdField.text != (id)[NSNull null] && feedIdField.text.length != 0) {
+        feedId = [[NSString alloc] initWithFormat:feedIdField.text];
+        [feedIdField setText:feedId];
+        NSUserDefaults *feedIdDefault = [NSUserDefaults standardUserDefaults];
+        [feedIdDefault setObject:feedId forKey:@"feedId"];
+    }
+    if (apiKeyField.text != (id)[NSNull null] && apiKeyField.text.length != 0) {
+        apiKey = [[NSString alloc] initWithFormat:apiKeyField.text];
+        [apiKeyField setText:apiKey];
+        NSUserDefaults *apiKeyDefault = [NSUserDefaults standardUserDefaults];
+        [apiKeyDefault setObject:apiKey forKey:@"apiKey"];
+    }
     
     [self backgroundClick:sender];
 }
@@ -100,8 +103,6 @@
     [request setHTTPMethod:@"PUT"];
     NSString *postString = @"0";
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(postString);
-        NSLog(url);
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 
 }

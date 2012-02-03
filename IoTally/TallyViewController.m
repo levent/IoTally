@@ -78,12 +78,19 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {   
-    NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.json?key=%@", feedId, apiKey];
-	responseData = [NSMutableData data];
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1.0];
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
-
     [super viewDidAppear:animated];
+    if((feedId == (id)[NSNull null] || feedId.length == 0) || (apiKey == (id)[NSNull null] || apiKey.length == 0)) {
+        currentTallyField.text = @"Please configure your feed";
+        [plusOneButton setEnabled:FALSE];
+        [minusOneButton setEnabled:FALSE];
+    } else {
+        [plusOneButton setEnabled:TRUE];
+        [minusOneButton setEnabled:TRUE];
+        NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.json?key=%@", feedId, apiKey];
+        responseData = [NSMutableData data];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1.0];
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -154,10 +161,11 @@
 
 - (void)drawSparkLine {
     NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?duration=1hour&interval_type=discrete&interval=15&key=%@", feedId, apiKey];
-    NSString *receivedDataPoints = [NSString stringWithContentsOfURL:[NSURL URLWithString:graphUrl]];
+    NSString *receivedDataPoints = [NSString stringWithContentsOfURL:[NSURL URLWithString:graphUrl] encoding:NSUTF8StringEncoding error:nil];
     NSArray *newArray = [receivedDataPoints componentsSeparatedByString:@"\n"];
     NSMutableArray *currentDataPoints = [[NSMutableArray alloc] init];
     int i;
+    NSLog(@"%d", [newArray count]);
     for(i = 0; i < [newArray count]; i++) {
         [currentDataPoints addObject:[[[newArray objectAtIndex:i] componentsSeparatedByString:@","] objectAtIndex:1]];
     }
