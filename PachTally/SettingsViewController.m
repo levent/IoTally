@@ -30,11 +30,19 @@
 
 - (void)viewDidLoad
 {
-    [feedIdField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"]];
-    [apiKeyField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"]];
-    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [feedIdField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"]];
+    [apiKeyField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"]];
+    feedId = [[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"];
+    apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"];
+    
+    // Reset Button stuff
+    [resetTally setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [resetTally setTitleColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1] forState:UIControlStateHighlighted];
+    [resetTally setHighColor:[UIColor redColor]];
+    [resetTally setLowColor:[UIColor redColor]];
 }
 
 - (void)viewDidUnload
@@ -82,6 +90,20 @@
     [apiKeyDefault setObject:apiKey forKey:@"apiKey"];
     
     [self backgroundClick:sender];
+}
+
+-(IBAction)setTallyToZero:(id)sender {
+    NSLog(@"here");
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?key=%@", feedId, apiKey];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"PUT"];
+    NSString *postString = @"0";
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(postString);
+        NSLog(url);
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+
 }
 
 - (IBAction)backgroundClick:(id)sender {

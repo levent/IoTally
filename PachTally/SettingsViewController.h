@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "ButtonWithColor.h"
 
 @interface SettingsViewController : UIViewController {
     NSString *feedId;
@@ -14,8 +16,10 @@
     
     IBOutlet UITextField *feedIdField;
     IBOutlet UITextField *apiKeyField;
+    IBOutlet ButtonWithColor *resetTally;
 }
 
 -(IBAction)saveSettings:(id)sender;
 -(IBAction)backgroundClick:(id)sender;
+-(IBAction)setTallyToZero:(id)sender;
 @end
