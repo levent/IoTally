@@ -58,7 +58,19 @@
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     if([responseString length] > 1) {
         NSDictionary *tallyDatastream = [responseString JSONValue];
-        currentTallyField.text = [tallyDatastream objectForKey:@"current_value"];
+        if([tallyDatastream objectForKey:@"datapoints"] == nil){
+            currentTallyField.text = [tallyDatastream objectForKey:@"current_value"];
+        } else {
+            NSArray *newArray = [tallyDatastream objectForKey:@"datapoints"];
+            NSMutableArray *currentDataPoints = [[NSMutableArray alloc] init];
+            int i;
+            for(i = 0; i < [newArray count]; i++) {
+                [currentDataPoints addObject:[[newArray objectAtIndex:i] objectForKey:@"value"]];
+            }
+            [sparkline setLineColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1]];
+            [sparkline setLineWidth:1.0];
+            [sparkline setData:currentDataPoints];
+        }
     }
 }
 
@@ -164,22 +176,10 @@
 }
 
 - (void)drawSparkLine {
-    NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?duration=1hour&interval_type=discrete&interval=15&key=%@", feedId, apiKey];
-    NSString *receivedDataPoints = [NSString stringWithContentsOfURL:[NSURL URLWithString:graphUrl] encoding:NSUTF8StringEncoding error:nil];
-    NSArray *newArray = [receivedDataPoints componentsSeparatedByString:@"\n"];
-    NSMutableArray *currentDataPoints = [[NSMutableArray alloc] init];
-    int i;
-    NSArray *currentRow = [[NSArray alloc] init];
-    for(i = 0; i < [newArray count]; i++) {
-        currentRow = [[newArray objectAtIndex:i] componentsSeparatedByString:@","];
-        if([currentRow count] == 2) {
-            [currentDataPoints addObject:[currentRow objectAtIndex:1]];
-        }
-    }
-    
-    [sparkline setLineColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1]];
-    [sparkline setLineWidth:1.0];
-    [sparkline setData:currentDataPoints];
+    NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.json?duration=1hour&interval_type=discrete&interval=15&key=%@", feedId, apiKey];
+    responseData = [NSMutableData data];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:graphUrl]];
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 @end

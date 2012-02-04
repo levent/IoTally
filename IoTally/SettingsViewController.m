@@ -96,8 +96,6 @@
 }
 
 -(IBAction)setTallyToZero:(id)sender {
-    NSLog(@"here");
-    
     NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?key=%@", feedId, apiKey];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
