@@ -7,8 +7,16 @@
 //
 
 #import "SettingsViewController.h"
+#import "OAuthRequestController.h"
+
+NSString *AccessTokenSavePath() {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    return [[paths objectAtIndex:0] stringByAppendingPathComponent:@"OAuthAccessToken.cache"];
+}
 
 @implementation SettingsViewController
+
+@synthesize accessToken;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,6 +68,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithFile:AccessTokenSavePath()];
+    if (self.accessToken == nil) {
+        [self beginAuthorisation];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -108,6 +120,11 @@
 - (IBAction)backgroundClick:(id)sender {
     [feedIdField resignFirstResponder];
     [apiKeyField resignFirstResponder];
+}
+
+- (void)beginAuthorisation {
+    OAuthRequestController *oauthController = [[OAuthRequestController alloc] init];
+    [self presentModalViewController:oauthController animated:YES];
 }
 
 @end

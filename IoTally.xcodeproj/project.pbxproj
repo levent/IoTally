@@ -43,6 +43,9 @@
 		2B50857D14DBFF230030A045 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B50857C14DBFF230030A045 /* icon.png */; };
 		2B50858014DC02670030A045 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B50857E14DC024D0030A045 /* QuartzCore.framework */; };
 		2B50858314DC038D0030A045 /* ButtonWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50858214DC038D0030A045 /* ButtonWithColor.m */; };
+		2B7568AD14E468BF00AD168D /* OAuthRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7568AB14E468BF00AD168D /* OAuthRequestController.m */; };
+		2B7568AE14E468BF00AD168D /* OAuthRequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B7568AC14E468BF00AD168D /* OAuthRequestController.xib */; };
+		2B7568B114E46CD900AD168D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7568AF14E46CCE00AD168D /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +106,12 @@
 		2B50857E14DC024D0030A045 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2B50858114DC038D0030A045 /* ButtonWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonWithColor.h; sourceTree = "<group>"; };
 		2B50858214DC038D0030A045 /* ButtonWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonWithColor.m; sourceTree = "<group>"; };
+		2B7568AA14E468BF00AD168D /* OAuthRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthRequestController.h; sourceTree = "<group>"; };
+		2B7568AB14E468BF00AD168D /* OAuthRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthRequestController.m; sourceTree = "<group>"; };
+		2B7568AC14E468BF00AD168D /* OAuthRequestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OAuthRequestController.xib; sourceTree = "<group>"; };
+		2B7568AF14E46CCE00AD168D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2B7568B214E474FC00AD168D /* PachubeAppCredentials-Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PachubeAppCredentials-Sample.h"; sourceTree = "<group>"; };
+		2B7568B414E4766600AD168D /* PachubeAppCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PachubeAppCredentials.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B7568B114E46CD900AD168D /* MobileCoreServices.framework in Frameworks */,
 				2B50858014DC02670030A045 /* QuartzCore.framework in Frameworks */,
 				2B28544C14D2F6C500C637E3 /* CoreLocation.framework in Frameworks */,
 				2B2853EF14D2B46500C637E3 /* UIKit.framework in Frameworks */,
@@ -143,6 +153,7 @@
 		2B2853ED14D2B46500C637E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B7568AF14E46CCE00AD168D /* MobileCoreServices.framework */,
 				2B50857E14DC024D0030A045 /* QuartzCore.framework */,
 				2B28544B14D2F6C500C637E3 /* CoreLocation.framework */,
 				2B2853EE14D2B46500C637E3 /* UIKit.framework */,
@@ -155,8 +166,42 @@
 		2B2853F414D2B46500C637E3 /* IoTally */ = {
 			isa = PBXGroup;
 			children = (
-				2B0F7BF514D9C3FB007D9B34 /* CKSparkline.h */,
-				2B0F7BF614D9C3FB007D9B34 /* CKSparkline.m */,
+				2B7568A914E4685500AD168D /* CKSparkline */,
+				2B7568A514E467C700AD168D /* SBJson */,
+				2B7568A714E467FF00AD168D /* Classes */,
+				2B28541D14D2B7DF00C637E3 /* 78-stopwatch.png */,
+				2B28541E14D2B7DF00C637E3 /* 78-stopwatch@2x.png */,
+				2B28541914D2B68700C637E3 /* 157-wrench.png */,
+				2B28541A14D2B68700C637E3 /* 157-wrench@2x.png */,
+				2B2853FD14D2B46500C637E3 /* AppDelegate.h */,
+				2B2853FE14D2B46500C637E3 /* AppDelegate.m */,
+				2B28540314D2B46500C637E3 /* first.png */,
+				2B28540514D2B46500C637E3 /* first@2x.png */,
+				2B28540A14D2B46500C637E3 /* second.png */,
+				2B28540C14D2B46500C637E3 /* second@2x.png */,
+				2B2853F514D2B46500C637E3 /* Supporting Files */,
+				2B50858114DC038D0030A045 /* ButtonWithColor.h */,
+				2B50858214DC038D0030A045 /* ButtonWithColor.m */,
+			);
+			path = IoTally;
+			sourceTree = "<group>";
+		};
+		2B2853F514D2B46500C637E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2B2853F614D2B46500C637E3 /* IoTally-Info.plist */,
+				2B2853F714D2B46500C637E3 /* InfoPlist.strings */,
+				2B2853FA14D2B46500C637E3 /* main.m */,
+				2B2853FC14D2B46500C637E3 /* IoTally-Prefix.pch */,
+				2B7568B214E474FC00AD168D /* PachubeAppCredentials-Sample.h */,
+				2B7568B414E4766600AD168D /* PachubeAppCredentials.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2B7568A514E467C700AD168D /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
 				2B28542114D2DB6000C637E3 /* NSObject+SBJson.h */,
 				2B28542214D2DB6000C637E3 /* NSObject+SBJson.m */,
 				2B28542314D2DB6000C637E3 /* SBJson.h */,
@@ -182,38 +227,41 @@
 				2B28543714D2DB6300C637E3 /* SBJsonUTF8Stream.m */,
 				2B28543814D2DB6300C637E3 /* SBJsonWriter.h */,
 				2B28543914D2DB6300C637E3 /* SBJsonWriter.m */,
-				2B28541D14D2B7DF00C637E3 /* 78-stopwatch.png */,
-				2B28541E14D2B7DF00C637E3 /* 78-stopwatch@2x.png */,
-				2B28541914D2B68700C637E3 /* 157-wrench.png */,
-				2B28541A14D2B68700C637E3 /* 157-wrench@2x.png */,
-				2B2853FD14D2B46500C637E3 /* AppDelegate.h */,
-				2B2853FE14D2B46500C637E3 /* AppDelegate.m */,
-				2B28540014D2B46500C637E3 /* TallyViewController.h */,
-				2B28540114D2B46500C637E3 /* TallyViewController.m */,
-				2B28540314D2B46500C637E3 /* first.png */,
-				2B28540514D2B46500C637E3 /* first@2x.png */,
-				2B28540714D2B46500C637E3 /* SettingsViewController.h */,
-				2B28540814D2B46500C637E3 /* SettingsViewController.m */,
-				2B28540A14D2B46500C637E3 /* second.png */,
-				2B28540C14D2B46500C637E3 /* second@2x.png */,
-				2B28540E14D2B46500C637E3 /* TallyViewController.xib */,
-				2B28541114D2B46500C637E3 /* SettingsViewController.xib */,
-				2B2853F514D2B46500C637E3 /* Supporting Files */,
-				2B50858114DC038D0030A045 /* ButtonWithColor.h */,
-				2B50858214DC038D0030A045 /* ButtonWithColor.m */,
 			);
-			path = IoTally;
+			name = SBJson;
 			sourceTree = "<group>";
 		};
-		2B2853F514D2B46500C637E3 /* Supporting Files */ = {
+		2B7568A714E467FF00AD168D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2B2853F614D2B46500C637E3 /* IoTally-Info.plist */,
-				2B2853F714D2B46500C637E3 /* InfoPlist.strings */,
-				2B2853FA14D2B46500C637E3 /* main.m */,
-				2B2853FC14D2B46500C637E3 /* IoTally-Prefix.pch */,
+				2B7568A814E4682600AD168D /* Controllers */,
 			);
-			name = "Supporting Files";
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		2B7568A814E4682600AD168D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B28540014D2B46500C637E3 /* TallyViewController.h */,
+				2B28540114D2B46500C637E3 /* TallyViewController.m */,
+				2B28540E14D2B46500C637E3 /* TallyViewController.xib */,
+				2B28541114D2B46500C637E3 /* SettingsViewController.xib */,
+				2B28540714D2B46500C637E3 /* SettingsViewController.h */,
+				2B28540814D2B46500C637E3 /* SettingsViewController.m */,
+				2B7568AA14E468BF00AD168D /* OAuthRequestController.h */,
+				2B7568AB14E468BF00AD168D /* OAuthRequestController.m */,
+				2B7568AC14E468BF00AD168D /* OAuthRequestController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2B7568A914E4685500AD168D /* CKSparkline */ = {
+			isa = PBXGroup;
+			children = (
+				2B0F7BF514D9C3FB007D9B34 /* CKSparkline.h */,
+				2B0F7BF614D9C3FB007D9B34 /* CKSparkline.m */,
+			);
+			name = CKSparkline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +327,7 @@
 				2B28542014D2B7DF00C637E3 /* 78-stopwatch@2x.png in Resources */,
 				2B50857B14DBFF200030A045 /* icon@2x.png in Resources */,
 				2B50857D14DBFF230030A045 /* icon.png in Resources */,
+				2B7568AE14E468BF00AD168D /* OAuthRequestController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +356,7 @@
 				2B28544514D2DB6300C637E3 /* SBJsonWriter.m in Sources */,
 				2B0F7BF714D9C3FB007D9B34 /* CKSparkline.m in Sources */,
 				2B50858314DC038D0030A045 /* ButtonWithColor.m in Sources */,
+				2B7568AD14E468BF00AD168D /* OAuthRequestController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

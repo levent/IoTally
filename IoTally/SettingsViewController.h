@@ -18,8 +18,11 @@
     IBOutlet UITextField *apiKeyField;
     IBOutlet ButtonWithColor *resetTally;
 }
+@property (nonatomic, retain) NSString *accessToken;
 
--(IBAction)saveSettings:(id)sender;
--(IBAction)backgroundClick:(id)sender;
--(IBAction)setTallyToZero:(id)sender;
+- (IBAction)saveSettings:(id)sender;
+- (IBAction)backgroundClick:(id)sender;
+- (IBAction)setTallyToZero:(id)sender;
+
+- (void)beginAuthorisation;
 @end
