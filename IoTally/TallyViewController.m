@@ -8,6 +8,8 @@
 
 #import "TallyViewController.h"
 
+#import "PachubeAppCredentials.h"
+
 @implementation TallyViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -102,7 +104,7 @@
     } else {
         [plusOneButton setEnabled:TRUE];
         [minusOneButton setEnabled:TRUE];
-        NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.json?key=%@", feedId, apiKey];
+        NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?key=%@", PBapiEndpoint, feedId, apiKey];
         responseData = [NSMutableData data];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1.0];
         [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -155,7 +157,7 @@
     } else {
         postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"}]}", currentValue];
     }
-    NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@.json?key=%@", feedId, apiKey]; 
+    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@.json?key=%@", PBapiEndpoint, feedId, apiKey]; 
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
@@ -176,7 +178,7 @@
 }
 
 - (void)drawSparkLine {
-    NSString *graphUrl = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.json?duration=1hour&interval_type=discrete&interval=15&key=%@", feedId, apiKey];
+    NSString *graphUrl = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?duration=1hour&interval_type=discrete&interval=15&key=%@", PBapiEndpoint, feedId, apiKey];
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:graphUrl]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];

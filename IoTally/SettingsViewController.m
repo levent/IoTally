@@ -9,10 +9,7 @@
 #import "SettingsViewController.h"
 #import "OAuthRequestController.h"
 
-NSString *AccessTokenSavePath() {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    return [[paths objectAtIndex:0] stringByAppendingPathComponent:@"OAuthAccessToken.cache"];
-}
+#import "PachubeAppCredentials.h"
 
 @implementation SettingsViewController
 
@@ -40,12 +37,7 @@ NSString *AccessTokenSavePath() {
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    [feedIdField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"]];
-    [apiKeyField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"]];
-    feedId = [[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"];
-    apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"];
-    
+   
     // Reset Button stuff
     [resetTally setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [resetTally setTitleColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1] forState:UIControlStateHighlighted];
@@ -68,8 +60,8 @@ NSString *AccessTokenSavePath() {
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.accessToken = [NSKeyedUnarchiver unarchiveObjectWithFile:AccessTokenSavePath()];
-    if (self.accessToken == nil) {
+    [self loadSettings];
+    if (apiKey == nil) {
         [self beginAuthorisation];
     }
 }
@@ -90,6 +82,13 @@ NSString *AccessTokenSavePath() {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (void)loadSettings {
+    [feedIdField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"]];
+    [apiKeyField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"]];
+    feedId = [[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"];
+    apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"];
+}
+
 -(IBAction)saveSettings:(id)sender {
     if (feedIdField.text != (id)[NSNull null] && feedIdField.text.length != 0) {
         feedId = [[NSString alloc] initWithFormat:feedIdField.text];
@@ -108,13 +107,12 @@ NSString *AccessTokenSavePath() {
 }
 
 -(IBAction)setTallyToZero:(id)sender {
-    NSString *url = [[NSString alloc] initWithFormat:@"http://api.pachube.com/v2/feeds/%@/datastreams/tally.csv?key=%@", feedId, apiKey];
+    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.csv?key=%@", PBapiEndpoint, feedId, apiKey];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
     NSString *postString = @"0";
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
-
 }
 
 - (IBAction)backgroundClick:(id)sender {
@@ -123,6 +121,7 @@ NSString *AccessTokenSavePath() {
 }
 
 - (void)beginAuthorisation {
+    NSLog(@"apikey: %@ feedid: %@", apiKey, feedId);
     OAuthRequestController *oauthController = [[OAuthRequestController alloc] init];
     [self presentModalViewController:oauthController animated:YES];
 }

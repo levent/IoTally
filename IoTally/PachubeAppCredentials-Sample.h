@@ -8,4 +8,6 @@
 
 #define PBoAuthAppId            @"my-app-id"
 #define PBoAuthAppSecret        @"my-app-secret"
-#define PBoAuthClientAuthURL    @"http://example.com/oauth"
+#define PBoauthRedirectURI      @"https://pachube.com?????"
+#define PBsiteEndpoint          @"http://pachube.com"
+#define PBapiEndpoint           @"https://api.pachube.com/v2"

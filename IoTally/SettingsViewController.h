@@ -25,4 +25,5 @@
 - (IBAction)setTallyToZero:(id)sender;
 
 - (void)beginAuthorisation;
+- (void)loadSettings;
 @end
