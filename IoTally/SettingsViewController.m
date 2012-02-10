@@ -61,7 +61,7 @@
 {
     [super viewDidAppear:animated];
     [self loadSettings];
-    if (apiKey == nil) {
+    if (apiKey == nil || feedId == nil) {
         [self beginAuthorisation];
     }
 }

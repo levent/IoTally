@@ -83,18 +83,14 @@
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"didreceiveresponse");
     NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
     NSLog(@"status code: %d", statusCode);
-//    if(statusCode >= 400) {
-//        [connection cancel];
-//    }
+    responseHeaders = [(NSHTTPURLResponse *)response allHeaderFields];
+    NSLog(@"headers: %@", [responseHeaders description]);
 	[responseData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"didreceivedata");
-    
 	[responseData appendData:data];
 }
 
@@ -105,7 +101,17 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    [self extractApiKey:responseString];
+    if([responseString length] > 1) {
+        [self extractApiKey:responseString];
+    }
+    else
+    {
+        NSArray *locationHeader = [[responseHeaders objectForKey:@"Location"] componentsSeparatedByString:@"/"];
+        NSLog(@"%@", [locationHeader lastObject]);
+        feedId = [locationHeader lastObject];
+        [userDefaults setObject:feedId forKey:@"feedId"];
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
@@ -116,12 +122,32 @@
     NSDictionary *oauthAuthorisation = [responseString JSONValue];
     NSLog(responseString);
     if ([oauthAuthorisation objectForKey:@"access_token"]) {
-        NSString *apiKey = [oauthAuthorisation objectForKey:@"access_token"];
+        apiKey = [oauthAuthorisation objectForKey:@"access_token"];
         NSLog(@"found: %@", apiKey);
-        NSUserDefaults *apiKeyDefault = [NSUserDefaults standardUserDefaults];
-        [apiKeyDefault setObject:apiKey forKey:@"apiKey"];
-        [self dismissModalViewControllerAnimated:YES];
+        userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:apiKey forKey:@"apiKey"];
+        NSString *feedId = [userDefaults objectForKey:@"feedId"];
+        if(feedId == nil)
+        {
+            [self createFeed];
+        }
+        else
+        {
+            [self dismissModalViewControllerAnimated:YES];
+        }
     }
+}
+
+-(void)createFeed {
+    responseData = [NSMutableData data];
+    NSLog(@"Create with key : %@", apiKey);
+    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/feeds.json?key=%@", PBapiEndpoint, apiKey]];
+    NSMutableURLRequest *newFeedRequest = [NSMutableURLRequest requestWithURL:fullURL];
+    [newFeedRequest setHTTPMethod:@"POST"];
+    NSString *postString = @"{\"title\":\"IoTally feed\",\"version\":\"1.0.0\"}";
+    NSLog(@"post string: %@", postString);
+    [newFeedRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    [[NSURLConnection alloc] initWithRequest:newFeedRequest delegate:self];
 }
 
 @end

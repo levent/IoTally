@@ -10,14 +10,19 @@
 #import "SBJson.h"
 
 @interface OAuthRequestController : UIViewController {
+    NSString *apiKey;
+    NSString *feedId;
     UIWebView *webView;
     NSMutableData *responseData;
+    NSDictionary *responseHeaders;
+    NSUserDefaults *userDefaults;
 }
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 
 - (NSURLRequest *)authenticateOnPachube;
 - (void)verifyWithCode:(NSString *)accessCode;
 - (void)extractApiKey:(NSString *)responseString;
+- (void)createFeed;
 
 @end
 
