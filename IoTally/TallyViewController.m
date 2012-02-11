@@ -113,12 +113,10 @@
         [plusOneButton setEnabled:FALSE];
         [minusOneButton setEnabled:FALSE];
     } else {
-        NSLog(@"feeew");
         [plusOneButton setEnabled:TRUE];
         [minusOneButton setEnabled:TRUE];
         NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1.0];
-                NSLog(@"feeew");
         [[NSURLConnection alloc] initWithRequest:request delegate:feedLoader];
     }
 }

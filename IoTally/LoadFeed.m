@@ -34,9 +34,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Fdsfsdfas");
     NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(responseString);
     if([responseString length] > 1) {
         NSDictionary *tallyDatastream = [responseString JSONValue];
         [myFeed setCurrentValue:[tallyDatastream objectForKey:@"current_value"]];

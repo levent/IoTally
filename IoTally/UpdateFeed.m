@@ -30,12 +30,10 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-//	myLabel.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"connectionError" object:nil];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"FDSASD");
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {

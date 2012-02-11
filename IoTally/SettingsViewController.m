@@ -110,7 +110,6 @@
 }
 
 - (void)beginAuthorisation {
-    NSLog(@"apikey: %@ feedid: %@", myFeed.apiKey, myFeed.feedId);
     OAuthRequestController *oauthController = [[OAuthRequestController alloc] initWithFeed:myFeed];
     [self presentModalViewController:oauthController animated:YES];
 }
