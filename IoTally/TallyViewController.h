@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedDelegate.h"
+#import "Feed.h"
 #import "SBJson.h"
 #import "CKSparkline.h"
 
-@interface TallyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate> {
-    NSString *feedId;
+@interface TallyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, FeedDelegate> {
     NSString *apiKey;
     NSString *currentLat;
     NSString *currentLon;
+    Feed *myFeed;
     
     BOOL *sendLocation;
     

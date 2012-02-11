@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedDelegate.h"
+#import "Feed.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ButtonWithColor.h"
 
-@interface SettingsViewController : UIViewController {
+@interface SettingsViewController : UIViewController <FeedDelegate> {
     NSString *feedId;
     NSString *apiKey;
+    Feed *myFeed;
     
     IBOutlet UITextField *feedIdField;
     IBOutlet UITextField *apiKeyField;

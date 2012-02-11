@@ -7,10 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
+#import "Feed.h"
 #import "TallyViewController.h"
-
 #import "SettingsViewController.h"
+
 
 @implementation AppDelegate
 
@@ -20,9 +20,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    UIViewController *viewController1 = [[TallyViewController alloc] initWithNibName:@"TallyViewController" bundle:nil];
-    UIViewController *viewController2 = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+
+    Feed *aFeed = [[Feed alloc] initWithUserDefaults];
+
+    UIViewController *viewController1 = [[TallyViewController alloc] initWithNibNameAndFeed:@"TallyViewController" feed:aFeed bundle:nil];
+    UIViewController *viewController2 = [[SettingsViewController alloc] initWithNibNameAndFeed:@"SettingsViewController" feed:aFeed bundle:nil];
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
     self.window.rootViewController = self.tabBarController;

@@ -46,6 +46,8 @@
 		2B7568AD14E468BF00AD168D /* OAuthRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7568AB14E468BF00AD168D /* OAuthRequestController.m */; };
 		2B7568AE14E468BF00AD168D /* OAuthRequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B7568AC14E468BF00AD168D /* OAuthRequestController.xib */; };
 		2B7568B114E46CD900AD168D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7568AF14E46CCE00AD168D /* MobileCoreServices.framework */; };
+		2BB8548B14E69EE000A1B0F4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8548A14E69EE000A1B0F4 /* Feed.m */; };
+		2BB8549214E6A20A00A1B0F4 /* FeedDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8549114E6A20A00A1B0F4 /* FeedDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +114,10 @@
 		2B7568AF14E46CCE00AD168D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2B7568B214E474FC00AD168D /* PachubeAppCredentials-Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PachubeAppCredentials-Sample.h"; sourceTree = "<group>"; };
 		2B7568B414E4766600AD168D /* PachubeAppCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PachubeAppCredentials.h; sourceTree = "<group>"; };
+		2BB8548914E69EE000A1B0F4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
+		2BB8548A14E69EE000A1B0F4 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
+		2BB8549014E6A20A00A1B0F4 /* FeedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDelegate.h; sourceTree = "<group>"; };
+		2BB8549114E6A20A00A1B0F4 /* FeedDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +240,8 @@
 		2B7568A714E467FF00AD168D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2BB8548814E69ECD00A1B0F4 /* Models */,
+				2BB8548614E69EBD00A1B0F4 /* Views */,
 				2B7568A814E4682600AD168D /* Controllers */,
 			);
 			name = Classes;
@@ -244,13 +252,10 @@
 			children = (
 				2B28540014D2B46500C637E3 /* TallyViewController.h */,
 				2B28540114D2B46500C637E3 /* TallyViewController.m */,
-				2B28540E14D2B46500C637E3 /* TallyViewController.xib */,
-				2B28541114D2B46500C637E3 /* SettingsViewController.xib */,
 				2B28540714D2B46500C637E3 /* SettingsViewController.h */,
 				2B28540814D2B46500C637E3 /* SettingsViewController.m */,
 				2B7568AA14E468BF00AD168D /* OAuthRequestController.h */,
 				2B7568AB14E468BF00AD168D /* OAuthRequestController.m */,
-				2B7568AC14E468BF00AD168D /* OAuthRequestController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -262,6 +267,27 @@
 				2B0F7BF614D9C3FB007D9B34 /* CKSparkline.m */,
 			);
 			name = CKSparkline;
+			sourceTree = "<group>";
+		};
+		2BB8548614E69EBD00A1B0F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2B28540E14D2B46500C637E3 /* TallyViewController.xib */,
+				2B28541114D2B46500C637E3 /* SettingsViewController.xib */,
+				2B7568AC14E468BF00AD168D /* OAuthRequestController.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2BB8548814E69ECD00A1B0F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2BB8548914E69EE000A1B0F4 /* Feed.h */,
+				2BB8548A14E69EE000A1B0F4 /* Feed.m */,
+				2BB8549014E6A20A00A1B0F4 /* FeedDelegate.h */,
+				2BB8549114E6A20A00A1B0F4 /* FeedDelegate.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +383,8 @@
 				2B0F7BF714D9C3FB007D9B34 /* CKSparkline.m in Sources */,
 				2B50858314DC038D0030A045 /* ButtonWithColor.m in Sources */,
 				2B7568AD14E468BF00AD168D /* OAuthRequestController.m in Sources */,
+				2BB8548B14E69EE000A1B0F4 /* Feed.m in Sources */,
+				2BB8549214E6A20A00A1B0F4 /* FeedDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,17 @@
+//
+//  Feed.h
+//  IoTally
+//
+//  Created by Levent Ali on 11/02/2012.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface Feed : NSObject {
+    NSUserDefaults *userDefaults;
+}
+@property (nonatomic, retain) NSString *currentValue;
+@property (nonatomic, retain) NSString *feedId;
+-(id)initWithUserDefaults;
+@end

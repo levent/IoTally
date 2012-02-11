@@ -18,7 +18,14 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    return self;
+}
+
+- (id)initWithNibNameAndFeed:(NSString *)nibNameOrNil feed:(Feed *)feed bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        myFeed = feed;
         self.title = NSLocalizedString(@"Settings", @"Settings");
         self.tabBarItem.image = [UIImage imageNamed:@"157-wrench"];
     }
@@ -61,7 +68,7 @@
 {
     [super viewDidAppear:animated];
     [self loadSettings];
-    if (apiKey == nil || feedId == nil) {
+    if (apiKey == nil || myFeed.feedId == nil) {
         [self beginAuthorisation];
     }
 }
