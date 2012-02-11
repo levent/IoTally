@@ -90,12 +90,8 @@
 
 -(IBAction)saveSettings:(id)sender {
     if (feedIdField.text != (id)[NSNull null] && feedIdField.text.length != 0) {
-        [myFeed setFeedId:[[NSString alloc] initWithFormat:feedIdField.text]];
+        [myFeed saveFeedId:feedIdField.text];
     }
-    if (apiKeyField.text != (id)[NSNull null] && apiKeyField.text.length != 0) {
-        [myFeed setApiKey:[[NSString alloc] initWithFormat:apiKeyField.text]];
-    }
-    
     [self backgroundClick:sender];
 }
 

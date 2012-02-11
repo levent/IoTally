@@ -21,4 +21,10 @@
     return self;
 }
 
+- (void)saveFeedId:(NSString *)value
+{
+    feedId = value;
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:@"feedID"];
+}
+
 @end

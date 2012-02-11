@@ -15,8 +15,8 @@
 @interface SettingsViewController : UIViewController <FeedDelegate> {
     Feed *myFeed;
     
-    IBOutlet UITextField *feedIdField;
-    IBOutlet UITextField *apiKeyField;
+    IBOutlet UILabel *feedIdField;
+    IBOutlet UILabel *apiKeyField;
     IBOutlet ButtonWithColor *resetTally;
 }
 @property (nonatomic, retain) NSString *accessToken;
