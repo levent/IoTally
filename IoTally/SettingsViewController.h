@@ -13,8 +13,8 @@
 #import "ButtonWithColor.h"
 
 @interface SettingsViewController : UIViewController <FeedDelegate> {
-    NSString *feedId;
-    NSString *apiKey;
+//    NSString *feedId;
+//    NSString *apiKey;
     Feed *myFeed;
     
     IBOutlet UITextField *feedIdField;

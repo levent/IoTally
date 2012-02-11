@@ -13,7 +13,6 @@
 #import "CKSparkline.h"
 
 @interface TallyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, FeedDelegate> {
-    NSString *apiKey;
     NSString *currentLat;
     NSString *currentLon;
     Feed *myFeed;

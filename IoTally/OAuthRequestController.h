@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SBJson.h"
+#import "FeedDelegate.h"
+#import "Feed.h"
 
-@interface OAuthRequestController : UIViewController {
-    NSString *apiKey;
-    NSString *feedId;
+@interface OAuthRequestController : UIViewController <FeedDelegate> {
+//    NSString *apiKey;
+//    NSString *feedId;
+    Feed *myFeed;
     UIWebView *webView;
     NSMutableData *responseData;
     NSDictionary *responseHeaders;

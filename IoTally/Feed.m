@@ -12,11 +12,12 @@
 
 @synthesize currentValue;
 @synthesize feedId;
+@synthesize apiKey;
 
 - (id)initWithUserDefaults
 {
     feedId = [[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"];
-//    apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"];
+    apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"];
     return self;
 }
 

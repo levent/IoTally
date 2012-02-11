@@ -97,22 +97,20 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-//    feedId = [[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"];
-    apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"];
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {   
     [super viewDidAppear:animated];
-    if((myFeed.feedId == (id)[NSNull null] || myFeed.feedId.length == 0) || (apiKey == (id)[NSNull null] || apiKey.length == 0)) {
+    if((myFeed.feedId == (id)[NSNull null] || myFeed.feedId.length == 0) || (myFeed.apiKey == (id)[NSNull null] || myFeed.apiKey.length == 0)) {
         currentTallyField.text = @"Please configure your feed";
         [plusOneButton setEnabled:FALSE];
         [minusOneButton setEnabled:FALSE];
     } else {
         [plusOneButton setEnabled:TRUE];
         [minusOneButton setEnabled:TRUE];
-        NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?key=%@", kPBapiEndpoint, myFeed.feedId, apiKey];
+        NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
         responseData = [NSMutableData data];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1.0];
         [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -169,7 +167,7 @@
     } else {
         postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"}]}", currentValue];
     }
-    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@.json?key=%@", kPBapiEndpoint, myFeed.feedId, apiKey]; 
+    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey]; 
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
@@ -190,7 +188,7 @@
 }
 
 - (void)drawSparkLine {
-    NSString *graphUrl = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?duration=1hour&interval_type=discrete&interval=15&key=%@", kPBapiEndpoint, myFeed.feedId, apiKey];
+    NSString *graphUrl = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?duration=1hour&interval_type=discrete&interval=15&key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:graphUrl]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];

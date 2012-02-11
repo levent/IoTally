@@ -68,7 +68,7 @@
 {
     [super viewDidAppear:animated];
     [self loadSettings];
-    if (apiKey == nil || myFeed.feedId == nil) {
+    if (myFeed.apiKey == nil || myFeed.feedId == nil) {
         [self beginAuthorisation];
     }
 }
@@ -90,31 +90,23 @@
 }
 
 - (void)loadSettings {
-    [feedIdField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"]];
-    [apiKeyField setText:[[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"]];
-    feedId = [[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"];
-    apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"];
+    [feedIdField setText:myFeed.feedId];
+    [apiKeyField setText:myFeed.apiKey];
 }
 
 -(IBAction)saveSettings:(id)sender {
     if (feedIdField.text != (id)[NSNull null] && feedIdField.text.length != 0) {
-        feedId = [[NSString alloc] initWithFormat:feedIdField.text];
-        [feedIdField setText:feedId];
-        NSUserDefaults *feedIdDefault = [NSUserDefaults standardUserDefaults];
-        [feedIdDefault setObject:feedId forKey:@"feedId"];
+        [myFeed setFeedId:[[NSString alloc] initWithFormat:feedIdField.text]];
     }
     if (apiKeyField.text != (id)[NSNull null] && apiKeyField.text.length != 0) {
-        apiKey = [[NSString alloc] initWithFormat:apiKeyField.text];
-        [apiKeyField setText:apiKey];
-        NSUserDefaults *apiKeyDefault = [NSUserDefaults standardUserDefaults];
-        [apiKeyDefault setObject:apiKey forKey:@"apiKey"];
+        [myFeed setApiKey:[[NSString alloc] initWithFormat:apiKeyField.text]];
     }
     
     [self backgroundClick:sender];
 }
 
 -(IBAction)setTallyToZero:(id)sender {
-    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.csv?key=%@", kPBapiEndpoint, feedId, apiKey];
+    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.csv?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
     NSString *postString = @"0";
@@ -128,8 +120,8 @@
 }
 
 - (void)beginAuthorisation {
-    NSLog(@"apikey: %@ feedid: %@", apiKey, feedId);
-    OAuthRequestController *oauthController = [[OAuthRequestController alloc] init];
+    NSLog(@"apikey: %@ feedid: %@", myFeed.apiKey, myFeed.feedId);
+    OAuthRequestController *oauthController = [[OAuthRequestController alloc] initWithFeed:myFeed];
     [self presentModalViewController:oauthController animated:YES];
 }
 

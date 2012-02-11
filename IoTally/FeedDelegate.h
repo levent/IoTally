@@ -12,6 +12,8 @@
 
 @protocol FeedDelegate <NSObject>
 
+@optional
+- (id)initWithFeed:(Feed *)feed;
 - (id)initWithNibNameAndFeed:(NSString *)nibNameOrNil feed:(Feed *)feed bundle:(NSBundle *)nibBundleOrNil;
 
 

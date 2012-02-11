@@ -13,5 +13,6 @@
 }
 @property (nonatomic, retain) NSString *currentValue;
 @property (nonatomic, retain) NSString *feedId;
+@property (nonatomic, retain) NSString *apiKey;
 -(id)initWithUserDefaults;
 @end

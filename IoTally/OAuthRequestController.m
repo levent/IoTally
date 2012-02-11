@@ -14,11 +14,11 @@
 
 @synthesize webView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithFeed:(Feed *)feed
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        // Custom initialization
+        myFeed = feed;
         self.modalPresentationStyle = UIModalPresentationFormSheet;
         self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     }
@@ -108,8 +108,8 @@
     {
         NSArray *locationHeader = [[responseHeaders objectForKey:@"Location"] componentsSeparatedByString:@"/"];
         NSLog(@"%@", [locationHeader lastObject]);
-        feedId = [locationHeader lastObject];
-        [userDefaults setObject:feedId forKey:@"feedId"];
+        [myFeed setFeedId:[locationHeader lastObject]];
+        [userDefaults setObject:myFeed.feedId forKey:@"feedId"];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
@@ -122,12 +122,12 @@
     NSDictionary *oauthAuthorisation = [responseString JSONValue];
     NSLog(responseString);
     if ([oauthAuthorisation objectForKey:@"access_token"]) {
-        apiKey = [oauthAuthorisation objectForKey:@"access_token"];
-        NSLog(@"found: %@", apiKey);
+        myFeed.apiKey = [oauthAuthorisation objectForKey:@"access_token"];
+        NSLog(@"found: %@", myFeed.apiKey);
         userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:apiKey forKey:@"apiKey"];
-        NSString *feedId = [userDefaults objectForKey:@"feedId"];
-        if(feedId == nil)
+        [userDefaults setObject:myFeed.apiKey forKey:@"apiKey"];
+//        NSString *feedId = [userDefaults objectForKey:@"feedId"];
+        if(myFeed.feedId == nil)
         {
             [self createFeed];
         }
@@ -140,8 +140,8 @@
 
 -(void)createFeed {
     responseData = [NSMutableData data];
-    NSLog(@"Create with key : %@", apiKey);
-    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/feeds.json?key=%@", kPBapiEndpoint, apiKey]];
+    NSLog(@"Create with key : %@", myFeed.apiKey);
+    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/feeds.json?key=%@", kPBapiEndpoint, myFeed.apiKey]];
     NSMutableURLRequest *newFeedRequest = [NSMutableURLRequest requestWithURL:fullURL];
     [newFeedRequest setHTTPMethod:@"POST"];
     NSString *postString = @"{\"title\":\"IoTally feed\",\"version\":\"1.0.0\"}";
