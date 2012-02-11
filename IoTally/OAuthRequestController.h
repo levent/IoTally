@@ -12,8 +12,6 @@
 #import "Feed.h"
 
 @interface OAuthRequestController : UIViewController <FeedDelegate> {
-//    NSString *apiKey;
-//    NSString *feedId;
     Feed *myFeed;
     UIWebView *webView;
     NSMutableData *responseData;

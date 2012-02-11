@@ -12,7 +12,7 @@
 #import "SBJson.h"
 #import "CKSparkline.h"
 
-@interface TallyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, FeedDelegate> {
+@interface TallyViewController : UIViewController <CLLocationManagerDelegate, FeedDelegate> {
     NSString *currentLat;
     NSString *currentLon;
     Feed *myFeed;
