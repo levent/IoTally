@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#define PBoAuthAppId            @"my-app-id"
-#define PBoAuthAppSecret        @"my-app-secret"
-#define PBoauthRedirectURI      @"https://pachube.com?????"
-#define PBsiteEndpoint          @"http://pachube.com"
-#define PBapiEndpoint           @"https://api.pachube.com/v2"
+#define kPBoAuthAppId            @"my-app-id"
+#define kPBoAuthAppSecret        @"my-app-secret"
+#define kPBoauthRedirectURI      @"https://pachube.com?????"
+#define kPBsiteEndpoint          @"http://pachube.com"
+#define kPBapiEndpoint           @"https://api.pachube.com/v2"

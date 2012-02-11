@@ -63,7 +63,7 @@
 }
 
 - (NSURLRequest *)authenticateOnPachube {
-    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/oauth/authenticate?client_id=%@", PBsiteEndpoint, PBoAuthAppId]];
+    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/oauth/authenticate?client_id=%@", kPBsiteEndpoint, kPBoAuthAppId]];
     NSMutableURLRequest *authRequest = [NSMutableURLRequest requestWithURL:fullURL];
     [authRequest setHTTPMethod:@"GET"];
     return [authRequest copy];
@@ -71,11 +71,11 @@
 
 - (void)verifyWithCode:(NSString *)accessCode {
     responseData = [NSMutableData data];
-    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/oauth/token?client_id=%@", PBsiteEndpoint, PBoAuthAppId]];
+    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/oauth/token?client_id=%@", kPBsiteEndpoint, kPBoAuthAppId]];
     NSLog(@"token exchange dance: %@", [fullURL absoluteString]);
     NSMutableURLRequest *tokenRequest = [NSMutableURLRequest requestWithURL:fullURL];
     [tokenRequest setHTTPMethod:@"POST"];
-    NSString *postString = [NSString stringWithFormat:@"code=%@&client_secret=%@&redirect_uri=%@&grant_type=authorization_code", accessCode, PBoAuthAppSecret, PBoauthRedirectURI];
+    NSString *postString = [NSString stringWithFormat:@"code=%@&client_secret=%@&redirect_uri=%@&grant_type=authorization_code", accessCode, kPBoAuthAppSecret, kPBoauthRedirectURI];
     NSLog(@"post string: %@", postString);
     [tokenRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:tokenRequest delegate:self];
@@ -141,7 +141,7 @@
 -(void)createFeed {
     responseData = [NSMutableData data];
     NSLog(@"Create with key : %@", apiKey);
-    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/feeds.json?key=%@", PBapiEndpoint, apiKey]];
+    NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/feeds.json?key=%@", kPBapiEndpoint, apiKey]];
     NSMutableURLRequest *newFeedRequest = [NSMutableURLRequest requestWithURL:fullURL];
     [newFeedRequest setHTTPMethod:@"POST"];
     NSString *postString = @"{\"title\":\"IoTally feed\",\"version\":\"1.0.0\"}";
@@ -154,7 +154,7 @@
 
 @implementation OAuthRequestController (UIWebViewIntegration)
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    if([[request.URL absoluteString] hasPrefix:PBoauthRedirectURI]) {
+    if([[request.URL absoluteString] hasPrefix:kPBoauthRedirectURI]) {
         [self extractCodeFromRedirectURL:request.URL];
         return NO;
     }
