@@ -16,15 +16,17 @@
     Feed *myFeed;
     
     IBOutlet UILabel *feedIdField;
-    IBOutlet UILabel *apiKeyField;
+    IBOutlet UILabel *infoField;
     IBOutlet ButtonWithColor *resetTally;
+    IBOutlet UIButton *saveButton;
+    IBOutlet UIButton *loginButton;
 }
 @property (nonatomic, retain) NSString *accessToken;
 
 - (IBAction)saveSettings:(id)sender;
 - (IBAction)backgroundClick:(id)sender;
 - (IBAction)setTallyToZero:(id)sender;
+- (IBAction)beginAuthorisation:(id)sender;
 
-- (void)beginAuthorisation;
 - (void)loadSettings;
 @end

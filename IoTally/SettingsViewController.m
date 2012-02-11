@@ -63,7 +63,21 @@
     [super viewDidAppear:animated];
     [self loadSettings];
     if (myFeed.apiKey == nil || myFeed.feedId == nil) {
-        [self beginAuthorisation];
+        [infoField setText:@"Please login to Pachube"];
+        [feedIdField setEnabled:NO];
+        [saveButton setHidden:YES];
+        [loginButton setHidden:NO];
+        [resetTally setEnabled:NO];
+        [saveButton setTitle:@"Login" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [infoField setText:@"This tally is linked to feed"];
+        [feedIdField setEnabled:YES];
+        [saveButton setHidden:NO];
+        [loginButton setHidden:YES];
+        [resetTally setEnabled:YES];
+        [saveButton setTitle:@"Update" forState:UIControlStateNormal];
     }
 }
 
@@ -85,7 +99,6 @@
 
 - (void)loadSettings {
     [feedIdField setText:myFeed.feedId];
-    [apiKeyField setText:myFeed.apiKey];
 }
 
 -(IBAction)saveSettings:(id)sender {
@@ -106,10 +119,9 @@
 
 - (IBAction)backgroundClick:(id)sender {
     [feedIdField resignFirstResponder];
-    [apiKeyField resignFirstResponder];
 }
 
-- (void)beginAuthorisation {
+- (IBAction)beginAuthorisation:(id)sender {
     OAuthRequestController *oauthController = [[OAuthRequestController alloc] initWithFeed:myFeed];
     [self presentModalViewController:oauthController animated:YES];
 }

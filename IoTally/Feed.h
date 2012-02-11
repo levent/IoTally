@@ -16,4 +16,5 @@
 @property (nonatomic, retain) NSString *apiKey;
 -(id)initWithUserDefaults;
 -(void)saveFeedId: (NSString *)value;
+-(void)saveApiKey: (NSString *)value;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "TallyViewController.h"
-
+#import "OAuthRequestController.h"
 #import "PachubeAppCredentials.h"
 
 @implementation TallyViewController
@@ -108,10 +108,12 @@
 - (void)viewDidAppear:(BOOL)animated
 {   
     [super viewDidAppear:animated];
+    NSLog(@"f:%@ a:%@", myFeed.feedId, myFeed.apiKey);
     if((myFeed.feedId == (id)[NSNull null] || myFeed.feedId.length == 0) || (myFeed.apiKey == (id)[NSNull null] || myFeed.apiKey.length == 0)) {
         currentTallyField.text = @"Please configure your feed";
         [plusOneButton setEnabled:FALSE];
         [minusOneButton setEnabled:FALSE];
+        [self beginAuthorisation];
     } else {
         [plusOneButton setEnabled:TRUE];
         [minusOneButton setEnabled:TRUE];
@@ -183,6 +185,25 @@
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:graphUrl]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+- (void)beginAuthorisation {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pachube login"
+                                                    message:@"You need to login to Pachube to continue"
+                                                   delegate:self
+                                          cancelButtonTitle:@"No thanks"
+                                          otherButtonTitles:@"OK", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if ([title isEqualToString:@"OK"])
+    {
+        OAuthRequestController *oauthController = [[OAuthRequestController alloc] initWithFeed:myFeed];
+        [self presentModalViewController:oauthController animated:YES];
+    }
 }
 
 @end

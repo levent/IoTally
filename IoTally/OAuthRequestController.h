@@ -24,6 +24,7 @@
 - (void)verifyWithCode:(NSString *)accessCode;
 - (void)extractApiKey:(NSString *)responseString;
 - (void)createFeed;
+- (IBAction)close:(id)sender;
 
 @end
 

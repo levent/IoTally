@@ -24,7 +24,13 @@
 - (void)saveFeedId:(NSString *)value
 {
     feedId = value;
-    [[NSUserDefaults standardUserDefaults] setObject:value forKey:@"feedID"];
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:@"feedId"];
+}
+
+- (void)saveApiKey:(NSString *)value
+{
+    apiKey = value;
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:@"apiKey"];
 }
 
 @end

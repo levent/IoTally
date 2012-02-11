@@ -62,6 +62,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)close:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (NSURLRequest *)authenticateOnPachube {
     NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/oauth/authenticate?client_id=%@", kPBsiteEndpoint, kPBoAuthAppId]];
     NSMutableURLRequest *authRequest = [NSMutableURLRequest requestWithURL:fullURL];
@@ -108,8 +112,8 @@
     {
         NSArray *locationHeader = [[responseHeaders objectForKey:@"Location"] componentsSeparatedByString:@"/"];
         NSLog(@"%@", [locationHeader lastObject]);
-        [myFeed setFeedId:[locationHeader lastObject]];
-        [userDefaults setObject:myFeed.feedId forKey:@"feedId"];
+        [myFeed saveFeedId:[locationHeader lastObject]];
+//        [userDefaults setObject:myFeed.feedId forKey:@"feedId"];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
@@ -122,7 +126,8 @@
     NSDictionary *oauthAuthorisation = [responseString JSONValue];
     NSLog(responseString);
     if ([oauthAuthorisation objectForKey:@"access_token"]) {
-        myFeed.apiKey = [oauthAuthorisation objectForKey:@"access_token"];
+//        myFeed.apiKey = [oauthAuthorisation objectForKey:@"access_token"];
+        [myFeed saveApiKey:[oauthAuthorisation objectForKey:@"access_token"]];
         NSLog(@"found: %@", myFeed.apiKey);
         userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:myFeed.apiKey forKey:@"apiKey"];
