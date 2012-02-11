@@ -13,7 +13,6 @@
 @interface UpdateFeed : NSObject <NSURLConnectionDataDelegate> {
     NSMutableData *responseData;
     Feed *myFeed;
-    UILabel *myLabel;
 }
-- (id)initWithFeedAndLabel:(Feed *)feed label:(UILabel *)label;
+- (id)initWithFeed:(Feed *)feed;
 @end

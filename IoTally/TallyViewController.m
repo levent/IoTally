@@ -19,9 +19,8 @@
     if (self) {
         sendLocation = FALSE;
         myFeed = feed;
-        NSLog(@"WHAT");
-        feedUpdater = [[UpdateFeed alloc] initWithFeedAndLabel:myFeed label:currentTallyField];
-        feedLoader = [[LoadFeed alloc] initWithFeedAndLabel:myFeed label:currentTallyField];
+        feedUpdater = [[UpdateFeed alloc] initWithFeed:myFeed];
+        feedLoader = [[LoadFeed alloc] initWithFeed:myFeed];
         self.title = NSLocalizedString(@"Tally", @"Tally");
         self.tabBarItem.image = [UIImage imageNamed:@"78-stopwatch"];
     }
@@ -38,11 +37,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCurrentTally) name:@"currentValueUpdated" object:nil];
+
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+}
+
+- (IBAction)updateCurrentTally
+{
+    [currentTallyField setText:myFeed.currentValue];
+}
+
+- (IBAction)connectionError
+{
+    [currentTallyField setText:@"Connection failed"];    
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

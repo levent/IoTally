@@ -37,6 +37,9 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *currentTallyField;
 
+-(IBAction)updateCurrentTally;
+-(IBAction)connectionError;
+
 -(IBAction)plusOne:(id)sender;
 -(IBAction)minusOne:(id)sender;
 //-(void)locationUpdate:(CLLocation *)location;

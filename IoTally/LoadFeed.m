@@ -10,10 +10,9 @@
 
 @implementation LoadFeed
 
-- (id)initWithFeedAndLabel:(Feed *)feed label:(UILabel *)label
+- (id)initWithFeed:(Feed *)feed
 {
     myFeed = feed;
-    myLabel = label;
     responseData = [NSMutableData data];
     return self;
 }
@@ -41,9 +40,8 @@
     if([responseString length] > 1) {
         NSDictionary *tallyDatastream = [responseString JSONValue];
         [myFeed setCurrentValue:[tallyDatastream objectForKey:@"current_value"]];
-//        NSLog(myFeed.currentValue);
-        [myLabel setText:myFeed.currentValue];
-//        NSLog(@"FDSFSSFAFDSFDSFADSFDSFSDF");
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"currentValueUpdated" object:nil];
     }
 }
 

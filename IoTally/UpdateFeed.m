@@ -10,10 +10,9 @@
 
 @implementation UpdateFeed
 
-- (id)initWithFeedAndLabel:(Feed *)feed label:(UILabel *)label
+- (id)initWithFeed:(Feed *)feed
 {
     myFeed = feed;
-    myLabel = label;
     responseData = [NSMutableData data];
     return self;
 }
@@ -31,7 +30,8 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	myLabel.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+//	myLabel.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"connectionError" object:nil];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

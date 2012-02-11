@@ -15,6 +15,6 @@
     Feed *myFeed;
     IBOutlet UILabel *myLabel;
 }
-- (id)initWithFeedAndLabel:(Feed *)feed label:(UILabel *)label;
+- (id)initWithFeed:(Feed *)feed;
 
 @end
