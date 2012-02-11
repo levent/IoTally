@@ -15,22 +15,26 @@
 @synthesize apiKey;
 
 - (id)initWithUserDefaults
+
 {
-    feedId = [[NSUserDefaults standardUserDefaults] objectForKey:@"feedId"];
-    apiKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"];
+    userDefaults = [NSUserDefaults standardUserDefaults];
+    feedId = [userDefaults objectForKey:@"feedId"];
+    apiKey = [userDefaults objectForKey:@"apiKey"];
     return self;
 }
 
 - (void)saveFeedId:(NSString *)value
 {
     feedId = value;
-    [[NSUserDefaults standardUserDefaults] setObject:value forKey:@"feedId"];
+    NSLog(@"FEED VAL: %@", feedId);
+    [userDefaults setObject:value forKey:@"feedId"];
 }
 
 - (void)saveApiKey:(NSString *)value
 {
     apiKey = value;
-    [[NSUserDefaults standardUserDefaults] setObject:value forKey:@"apiKey"];
+    NSLog(@"API KEY VAL: %@", apiKey);
+    [userDefaults setObject:value forKey:@"apiKey"];
 }
 
 @end

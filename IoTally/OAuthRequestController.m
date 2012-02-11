@@ -100,7 +100,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 //	currentTallyField.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
-    NSLog(@"error");
+    NSLog(@"error %@", [error description]);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -111,9 +111,7 @@
     else
     {
         NSArray *locationHeader = [[responseHeaders objectForKey:@"Location"] componentsSeparatedByString:@"/"];
-        NSLog(@"%@", [locationHeader lastObject]);
         [myFeed saveFeedId:[locationHeader lastObject]];
-//        [userDefaults setObject:myFeed.feedId forKey:@"feedId"];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
@@ -124,14 +122,8 @@
 
 - (void)extractApiKey:(NSString *)responseString {
     NSDictionary *oauthAuthorisation = [responseString JSONValue];
-    NSLog(responseString);
     if ([oauthAuthorisation objectForKey:@"access_token"]) {
-//        myFeed.apiKey = [oauthAuthorisation objectForKey:@"access_token"];
         [myFeed saveApiKey:[oauthAuthorisation objectForKey:@"access_token"]];
-        NSLog(@"found: %@", myFeed.apiKey);
-        userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:myFeed.apiKey forKey:@"apiKey"];
-//        NSString *feedId = [userDefaults objectForKey:@"feedId"];
         if(myFeed.feedId == nil)
         {
             [self createFeed];
@@ -145,11 +137,10 @@
 
 -(void)createFeed {
     responseData = [NSMutableData data];
-    NSLog(@"Create with key : %@", myFeed.apiKey);
     NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/feeds.json?key=%@", kPBapiEndpoint, myFeed.apiKey]];
     NSMutableURLRequest *newFeedRequest = [NSMutableURLRequest requestWithURL:fullURL];
     [newFeedRequest setHTTPMethod:@"POST"];
-    NSString *postString = @"{\"title\":\"IoTally feed\",\"version\":\"1.0.0\"}";
+    NSString *postString = @"{\"title\":\"IoTally feed\",\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"0\"}]}";
     NSLog(@"post string: %@", postString);
     [newFeedRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:newFeedRequest delegate:self];
