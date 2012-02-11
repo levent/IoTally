@@ -11,6 +11,7 @@
 #import "PachubeAppCredentials.h"
 
 @implementation TallyViewController
+@synthesize currentTallyField;
 
 - (id)initWithNibNameAndFeed:(NSString *)nibNameOrNil feed:(Feed *)feed bundle:(NSBundle *)nibBundleOrNil
 {
@@ -18,6 +19,9 @@
     if (self) {
         sendLocation = FALSE;
         myFeed = feed;
+        NSLog(@"WHAT");
+        feedUpdater = [[UpdateFeed alloc] initWithFeedAndLabel:myFeed label:currentTallyField];
+        feedLoader = [[LoadFeed alloc] initWithFeedAndLabel:myFeed label:currentTallyField];
         self.title = NSLocalizedString(@"Tally", @"Tally");
         self.tabBarItem.image = [UIImage imageNamed:@"78-stopwatch"];
     }
@@ -61,20 +65,15 @@
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     if([responseString length] > 1) {
         NSDictionary *tallyDatastream = [responseString JSONValue];
-        if([tallyDatastream objectForKey:@"datapoints"] == nil){
-            [myFeed setCurrentValue:[tallyDatastream objectForKey:@"current_value"]];
-            currentTallyField.text = myFeed.currentValue;
-        } else {
-            NSArray *newArray = [tallyDatastream objectForKey:@"datapoints"];
-            NSMutableArray *currentDataPoints = [[NSMutableArray alloc] init];
-            int i;
-            for(i = 0; i < [newArray count]; i++) {
-                [currentDataPoints addObject:[[newArray objectAtIndex:i] objectForKey:@"value"]];
-            }
-            [sparkline setLineColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1]];
-            [sparkline setLineWidth:1.0];
-            [sparkline setData:currentDataPoints];
+        NSArray *newArray = [tallyDatastream objectForKey:@"datapoints"];
+        NSMutableArray *currentDataPoints = [[NSMutableArray alloc] init];
+        int i;
+        for(i = 0; i < [newArray count]; i++) {
+            [currentDataPoints addObject:[[newArray objectAtIndex:i] objectForKey:@"value"]];
         }
+        [sparkline setLineColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1]];
+        [sparkline setLineWidth:1.0];
+        [sparkline setData:currentDataPoints];
     }
 }
 
@@ -102,12 +101,13 @@
         [plusOneButton setEnabled:FALSE];
         [minusOneButton setEnabled:FALSE];
     } else {
+        NSLog(@"feeew");
         [plusOneButton setEnabled:TRUE];
         [minusOneButton setEnabled:TRUE];
         NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
-        responseData = [NSMutableData data];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1.0];
-        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+                NSLog(@"feeew");
+        [[NSURLConnection alloc] initWithRequest:request delegate:feedLoader];
     }
 }
 
@@ -149,12 +149,11 @@
     } else {
         postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"}]}", currentValue];
     }
-    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey]; 
-    responseData = [NSMutableData data];
+    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
     [request setHTTPBody:[postBody dataUsingEncoding:NSUTF8StringEncoding]];
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [[NSURLConnection alloc] initWithRequest:request delegate:feedUpdater];
     
     [self drawSparkLine];
 }

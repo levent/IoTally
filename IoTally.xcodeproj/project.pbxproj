@@ -47,6 +47,8 @@
 		2B7568AE14E468BF00AD168D /* OAuthRequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B7568AC14E468BF00AD168D /* OAuthRequestController.xib */; };
 		2B7568B114E46CD900AD168D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7568AF14E46CCE00AD168D /* MobileCoreServices.framework */; };
 		2BB8548B14E69EE000A1B0F4 /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8548A14E69EE000A1B0F4 /* Feed.m */; };
+		2BB8549B14E6B3BD00A1B0F4 /* UpdateFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8549A14E6B3BD00A1B0F4 /* UpdateFeed.m */; };
+		2BB8549E14E6B93F00A1B0F4 /* LoadFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8549D14E6B93F00A1B0F4 /* LoadFeed.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +118,10 @@
 		2BB8548914E69EE000A1B0F4 /* Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
 		2BB8548A14E69EE000A1B0F4 /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
 		2BB8549014E6A20A00A1B0F4 /* FeedDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDelegate.h; sourceTree = "<group>"; };
+		2BB8549914E6B3BD00A1B0F4 /* UpdateFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateFeed.h; sourceTree = "<group>"; };
+		2BB8549A14E6B3BD00A1B0F4 /* UpdateFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateFeed.m; sourceTree = "<group>"; };
+		2BB8549C14E6B93F00A1B0F4 /* LoadFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadFeed.h; sourceTree = "<group>"; };
+		2BB8549D14E6B93F00A1B0F4 /* LoadFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadFeed.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +289,10 @@
 				2BB8548914E69EE000A1B0F4 /* Feed.h */,
 				2BB8548A14E69EE000A1B0F4 /* Feed.m */,
 				2BB8549014E6A20A00A1B0F4 /* FeedDelegate.h */,
+				2BB8549C14E6B93F00A1B0F4 /* LoadFeed.h */,
+				2BB8549D14E6B93F00A1B0F4 /* LoadFeed.m */,
+				2BB8549914E6B3BD00A1B0F4 /* UpdateFeed.h */,
+				2BB8549A14E6B3BD00A1B0F4 /* UpdateFeed.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -381,6 +391,8 @@
 				2B50858314DC038D0030A045 /* ButtonWithColor.m in Sources */,
 				2B7568AD14E468BF00AD168D /* OAuthRequestController.m in Sources */,
 				2BB8548B14E69EE000A1B0F4 /* Feed.m in Sources */,
+				2BB8549B14E6B3BD00A1B0F4 /* UpdateFeed.m in Sources */,
+				2BB8549E14E6B93F00A1B0F4 /* LoadFeed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

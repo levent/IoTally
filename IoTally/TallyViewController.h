@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedDelegate.h"
+#import "UpdateFeed.h"
+#import "LoadFeed.h"
 #import "Feed.h"
 #import "SBJson.h"
 #import "CKSparkline.h"
@@ -16,6 +18,9 @@
     NSString *currentLat;
     NSString *currentLon;
     Feed *myFeed;
+    
+    UpdateFeed *feedUpdater;
+    LoadFeed *feedLoader;
     
     BOOL *sendLocation;
     
@@ -27,8 +32,10 @@
     
     IBOutlet UIButton *plusOneButton;
     IBOutlet UIButton *minusOneButton;
-    IBOutlet UILabel *currentTallyField;
+//    IBOutlet UILabel *currentTallyField;
 }
+
+@property (nonatomic, retain) IBOutlet UILabel *currentTallyField;
 
 -(IBAction)plusOne:(id)sender;
 -(IBAction)minusOne:(id)sender;
