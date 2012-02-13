@@ -117,6 +117,7 @@
         [locationManager startUpdatingLocation];
         [plusOneButton setEnabled:TRUE];
         [minusOneButton setEnabled:TRUE];
+        [self drawSparkLine];
         NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1.0];
         [[NSURLConnection alloc] initWithRequest:request delegate:feedLoader];
@@ -181,7 +182,7 @@
 }
 
 - (void)drawSparkLine {
-    NSString *graphUrl = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?duration=1hour&interval_type=discrete&interval=15&key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
+    NSString *graphUrl = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?duration=1hour&interval_type=discrete&interval=1&key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
     responseData = [NSMutableData data];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:graphUrl]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
