@@ -76,11 +76,11 @@
 - (void)verifyWithCode:(NSString *)accessCode {
     responseData = [NSMutableData data];
     NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/oauth/token?client_id=%@", kPBsiteEndpoint, kPBoAuthAppId]];
-    NSLog(@"token exchange dance: %@", [fullURL absoluteString]);
+//    NSLog(@"token exchange dance: %@", [fullURL absoluteString]);
     NSMutableURLRequest *tokenRequest = [NSMutableURLRequest requestWithURL:fullURL];
     [tokenRequest setHTTPMethod:@"POST"];
     NSString *postString = [NSString stringWithFormat:@"code=%@&client_secret=%@&redirect_uri=%@&grant_type=authorization_code", accessCode, kPBoAuthAppSecret, kPBoauthRedirectURI];
-    NSLog(@"post string: %@", postString);
+//    NSLog(@"post string: %@", postString);
     [tokenRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:tokenRequest delegate:self];
 }
@@ -88,9 +88,9 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
-    NSLog(@"status code: %d", statusCode);
+//    NSLog(@"status code: %d", statusCode);
     responseHeaders = [(NSHTTPURLResponse *)response allHeaderFields];
-    NSLog(@"headers: %@", [responseHeaders description]);
+//    NSLog(@"headers: %@", [responseHeaders description]);
 	[responseData setLength:0];
 }
 
@@ -100,7 +100,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 //	currentTallyField.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
-    NSLog(@"error %@", [error description]);
+//    NSLog(@"error %@", [error description]);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -141,7 +141,7 @@
     NSMutableURLRequest *newFeedRequest = [NSMutableURLRequest requestWithURL:fullURL];
     [newFeedRequest setHTTPMethod:@"POST"];
     NSString *postString = @"{\"title\":\"IoTally feed\",\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"0\"}]}";
-    NSLog(@"post string: %@", postString);
+//    NSLog(@"post string: %@", postString);
     [newFeedRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:newFeedRequest delegate:self];
 }
@@ -154,7 +154,7 @@
         [self extractCodeFromRedirectURL:request.URL];
         return NO;
     }
-    NSLog([request.URL absoluteString]);
+//    NSLog([request.URL absoluteString]);
     return YES;
 }
 
@@ -188,13 +188,13 @@
 
 // MUST REMOVE BEFORE SUBMISSION
 // DISABLES SSL CERT
-@interface NSURLRequest (NSURLRequestWithIgnoreSSL) 
-+(BOOL)allowsAnyHTTPSCertificateForHost:(NSString*)host;
-@end
+//@interface NSURLRequest (NSURLRequestWithIgnoreSSL) 
+//+(BOOL)allowsAnyHTTPSCertificateForHost:(NSString*)host;
+//@end
 
-@implementation NSURLRequest (NSURLRequestWithIgnoreSSL) 
-+(BOOL)allowsAnyHTTPSCertificateForHost:(NSString*)host
-{
-    return YES;
-}
-@end
+//@implementation NSURLRequest (NSURLRequestWithIgnoreSSL) 
+//+(BOOL)allowsAnyHTTPSCertificateForHost:(NSString*)host
+//{
+//    return YES;
+//}
+//@end
