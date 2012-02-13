@@ -51,7 +51,7 @@
 							<object class="IBUINavigationItem" id="65436854">
 								<reference key="IBUINavigationBar" ref="310152868"/>
 								<string key="IBUITitle">Login to Pachube</string>
-								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="115089891">
+								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="115089891">
 									<string key="IBUITitle">Close</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
@@ -91,10 +91,9 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIToolbar" id="182640294">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">266</int>
 				<string key="NSFrameSize">{320, 44}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSReuseIdentifierKey">_NS:371</string>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>

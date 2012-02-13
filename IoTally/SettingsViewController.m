@@ -109,10 +109,10 @@
 }
 
 -(IBAction)setTallyToZero:(id)sender {
-    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.csv?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
+    NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"PUT"];
-    NSString *postString = @"0";
+    NSString *postString = @"{\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"0\"}]}";
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }

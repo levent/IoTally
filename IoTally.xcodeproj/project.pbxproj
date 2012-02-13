@@ -522,12 +522,14 @@
 		2BE718FD14DC22FF00B530FC /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Purebreeze Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IoTally/IoTally-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "IoTally/IoTally-Info.plist";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = IoTally;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74F9CE61-D403-40B8-9EEA-E385AF94EE3F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AdHoc;

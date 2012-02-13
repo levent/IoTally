@@ -44,7 +44,6 @@
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
 }
 
 - (IBAction)updateCurrentTally
@@ -108,13 +107,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {   
     [super viewDidAppear:animated];
-    NSLog(@"f:%@ a:%@", myFeed.feedId, myFeed.apiKey);
+//    NSLog(@"f:%@ a:%@", myFeed.feedId, myFeed.apiKey);
     if((myFeed.feedId == (id)[NSNull null] || myFeed.feedId.length == 0) || (myFeed.apiKey == (id)[NSNull null] || myFeed.apiKey.length == 0)) {
         currentTallyField.text = @"Please configure your feed";
         [plusOneButton setEnabled:FALSE];
         [minusOneButton setEnabled:FALSE];
         [self beginAuthorisation];
     } else {
+        [locationManager startUpdatingLocation];
         [plusOneButton setEnabled:TRUE];
         [minusOneButton setEnabled:TRUE];
         NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@/datastreams/tally.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
@@ -157,9 +157,9 @@
 -(void)updateFeed:(NSString *)currentValue {
     NSString *postBody;
     if(sendLocation) {
-        postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"location\":{\"lat\":\"%@\",\"lon\":\"%@\"},\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"},{\"id\":\"lat\",\"current_value\":\"%@\"},{\"id\":\"lon\",\"current_value\":\"%@\"}]}", currentLat, currentLon, currentValue, currentLat, currentLon];
+        postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"tags\":[\"tally\",\"counter\"],\"location\":{\"lat\":\"%@\",\"lon\":\"%@\"},\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"},{\"id\":\"lat\",\"current_value\":\"%@\"},{\"id\":\"lon\",\"current_value\":\"%@\"}]}", currentLat, currentLon, currentValue, currentLat, currentLon];
     } else {
-        postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"}]}", currentValue];
+        postBody = [[NSString alloc] initWithFormat:@"{\"version\":\"1.0.0\",\"tags\":[\"tally\",\"counter\"],\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"%@\"}]}", currentValue];
     }
     NSString *url = [[NSString alloc] initWithFormat:@"%@/feeds/%@.json?key=%@", kPBapiEndpoint, myFeed.feedId, myFeed.apiKey];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
