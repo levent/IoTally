@@ -1,6 +1,6 @@
 //
 //  ButtonWithColor.h
-//  IoTally
+//  Tally
 //
 //  Created by Levent Ali on 03/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.

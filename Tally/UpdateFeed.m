@@ -1,14 +1,14 @@
 //
-//  LoadFeed.m
-//  IoTally
+//  UpdateFeed.m
+//  Tally
 //
 //  Created by Levent Ali on 11/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "LoadFeed.h"
+#import "UpdateFeed.h"
 
-@implementation LoadFeed
+@implementation UpdateFeed
 
 - (id)initWithFeed:(Feed *)feed
 {
@@ -30,20 +30,14 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	myLabel.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"connectionError" object:nil];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    if([responseString length] > 1) {
-        NSDictionary *tallyDatastream = [responseString JSONValue];
-        [myFeed setCurrentValue:[tallyDatastream objectForKey:@"current_value"]];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"currentValueUpdated" object:nil];
-    }
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
     return nil;
 }
+
 @end

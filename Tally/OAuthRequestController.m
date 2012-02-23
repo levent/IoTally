@@ -1,6 +1,6 @@
 //
 //  OAuthRequestController.m
-//  IoTally
+//  Tally
 //
 //  Created by Levent Ali on 09/02/2012.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
@@ -140,7 +140,7 @@
     NSURL *fullURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/feeds.json?key=%@", kPBapiEndpoint, myFeed.apiKey]];
     NSMutableURLRequest *newFeedRequest = [NSMutableURLRequest requestWithURL:fullURL];
     [newFeedRequest setHTTPMethod:@"POST"];
-    NSString *postString = @"{\"title\":\"IoTally feed\",\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"0\"}]}";
+    NSString *postString = @"{\"title\":\"Tally feed\",\"version\":\"1.0.0\",\"datastreams\":[{\"id\":\"tally\",\"current_value\":\"0\"}]}";
 //    NSLog(@"post string: %@", postString);
     [newFeedRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [[NSURLConnection alloc] initWithRequest:newFeedRequest delegate:self];

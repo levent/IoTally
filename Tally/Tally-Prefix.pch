@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'IoTally' target in the 'IoTally' project
+// Prefix header for all source files of the 'Tally' target in the 'Tally' project
 //
 
 #import <Availability.h>
